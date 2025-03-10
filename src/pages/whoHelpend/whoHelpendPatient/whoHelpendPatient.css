@@ -1,0 +1,86 @@
+.whoHelpendContainer {
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px;
+}
+.imageContainer {
+    background: rgba(76, 175, 80, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.patientImage {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    border: 6px solid #4caf50;
+}
+
+.patientInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.patientName {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2e7d32;
+    line-height: 1;
+}
+
+.diagnosis {
+    font-size: 20px;
+    color: #444;
+}
+
+.treatment {
+    font-size: 20px;
+    color: #222;
+}
+
+.statusClosed {
+    background: #ffffff;
+    color: #000;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #32e600;
+}
+
+.backButton {
+    margin-top: 20px;
+    padding: 15px 25px;
+    background: #388e3c;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.backButton:hover {
+    background: #2e7d32;
+}
+
+@media (max-width: 668px) {
+    .whoHelpendContainer{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 490px){
+     .statusClosed{
+        font-size: 18px;
+     }
+}

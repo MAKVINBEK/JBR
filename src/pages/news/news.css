@@ -1,0 +1,110 @@
+#news{
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(91, 132, 163, 0.316);
+    margin: -100px 0;
+}
+
+.newsContainer{
+    max-width: 1280px;
+    width: 90%;
+    margin: 100px 0;
+}
+
+.newsBlock{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+#newsBlock{
+    width: 270px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+#newsBlock:hover{
+    box-shadow: 0px 0px 15px rgb(0, 0, 0);
+    transition: 0.5s;
+}
+
+.newsBlockImg{
+    width: 270px;
+    height: 190px;
+    overflow: hidden;
+}
+
+.newsBlockImg>img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.newsBlockImg>img:hover{
+    transform: scale(1.05);
+    transition: background-color 0.5s ease, transform 0.5s ease;
+    text-underline-offset: 4px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.newsContainer>div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.newsContainer>div:nth-child(1)>h2{
+    font-family: Manrope;
+    font-size: 35px;
+    text-align: center;
+    line-height: 1.1;
+}
+
+.newsContainer>div:nth-child(1)>p{
+    text-align: center;
+    font-family: Manrope;
+    font-size: 15px;
+    text-align: center;
+}
+
+.newsBlockContainer>div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.newsBlockContainer>div:nth-child(2)>h3{
+    font-family: Manrope;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 5px;
+}
+
+
+.newsBlockContainer>div:nth-child(2)>p{
+    font-family: Manrope;
+    font-size: 14px;
+}
+
+#newsBlock>h4{
+    font-family: Manrope;
+    text-decoration: underline;
+    font-size: 14px;
+    color: rgb(111, 111, 227);
+}

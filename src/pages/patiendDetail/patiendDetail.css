@@ -1,0 +1,205 @@
+#patientDetail {
+    max-width: 1280px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.patientDetailContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 1100px;
+    padding: 40px 20px;
+    gap: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;
+}
+
+.patientDetailBlock{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+}
+
+.patientDetailBlock>div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.patientDetailBlock>div:nth-child(2)>h3{
+    color: #005089;
+    font-family: Manrope;
+    font-size: 25px;
+}
+
+.patientData1{
+    background-color: #82cbff41;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.patientData1>span{
+    font-family: Manrope;
+    font-size: 14px;
+    color: #005089;
+}
+
+.patientData2{
+    background-color: #82cbff41;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.patientData2>span{
+    font-family: Manrope;
+    font-size: 14px;
+    color: #005089;
+}
+
+.patientData4{
+    display: flex;
+    justify-content: space-between;
+    background-color: #82cbff41;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.patientData5{
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.patientData5>p{
+    font-family: Manrope;
+    font-size: 14px;
+}
+
+.patientData5>div{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.patientData5>div>button{
+    width: 180px;
+    height: 35px;
+    background-color: rgb(1, 213, 1);
+    border: none;
+    color: white;
+    font-family: Manrope;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.patientData5>div>button:hover{
+    background-color: rgb(0, 103, 0);
+    transition: 0.5s;
+
+}
+
+
+.showDocsButton {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.152);
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s;
+    font-family: Manrope;
+    font-size: 17px;
+}
+
+.showDocsButton:hover{
+    background: rgba(0, 0, 0, 0.355);
+    color: white;
+
+}
+
+.documentsContainer {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+#pdfThumbnail {
+    width: 200px;
+    height: 250px;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.594);
+}
+
+#pdfThumbnail:hover{
+    transform: scale(1.05);
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+
+.enlargedImage {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.imgBlock>img {
+    width: 100%;
+    height: 280px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 3px solid #0077cc;
+}
+
+.imgBlock div{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.imgBlock div img{
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: .3s all;
+}
+
+.imgBlock div img:hover{
+    border: 2px solid #0077cc;
+    transform: scale(1.1);
+}
+
+@media(max-width:760px){
+    .patientDetailBlock{
+        grid-template-columns: 1fr;
+    }
+}

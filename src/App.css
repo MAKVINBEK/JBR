@@ -1,0 +1,14 @@
+@font-face {
+  font-family: Manrope;
+  src: url(./fonts/manrope-medium.otf);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  padding-top: 150px;
+}

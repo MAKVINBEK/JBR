@@ -1,0 +1,110 @@
+#HomePage1 {
+    width: 100%;
+    background: linear-gradient(45deg, rgb(0, 66, 159), #04abff);
+}
+
+.homePage1Container{
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.homePageBlock1{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.homePageBlock1>div>img{
+    width: 250px;
+}
+
+.homePageBlock1>div{
+    display: flex;
+    gap: 5px;
+}
+
+.homePageBlock1>div>h2{
+    color: white;
+    font-family: Manrope;
+    font-size: 35px;
+    line-height: 1.2;
+}
+
+.homePageBlock1>h3{
+    color: white;
+    font-family: Manrope;
+    font-size: 15px;
+    line-height: 1.2;
+}
+
+.homePageBlock2{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.homePageBlock2>h2{
+    font-family: Manrope;
+    color: white;
+    font-size: 30px;
+}
+
+.homePageBlock2>input{
+    max-width: 500px;
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+    font-family: Manrope;
+    color: rgb(85, 85, 85);
+}
+
+.inputMask{
+    max-width: 500px;
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+    font-family: Manrope;
+    color: rgb(85, 85, 85);
+}
+
+.homePageBlock2>button{
+    max-width: 500px;
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    font-family: Manrope;
+    background: linear-gradient(45deg, rgb(0, 145, 255), #207ced);
+    color:white;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.homePageBlock2>button:hover{
+    background: linear-gradient(45deg, #207ced, rgb(0, 145, 255));
+}
+
+.homePageBlock2>p{
+    color: white;
+    font-family: Manrope;
+    font-size: 14px;
+}
+
+@media(max-width:860px){
+    .homePage1Container{
+        flex-direction: column;
+    }
+
+    .homePageBlock1>div{
+        flex-direction: column;
+    }
+}

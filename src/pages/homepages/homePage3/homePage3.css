@@ -1,0 +1,76 @@
+#homepage3{
+    width: 100%;
+    background: linear-gradient(45deg, rgb(95, 161, 255), #065881);
+    padding: 50px 0;
+    margin-top: 80px;
+}
+
+.homepage3Container{
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.homepage3Container>h2{
+    font-family: Manrope;
+    color: white;
+    font-size: 35px;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.homePage3Blocks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:20px 40px;
+}
+
+.homePage3Blocks>div{
+    width: 230px;
+    height: 260px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(121, 190, 255);
+    padding: 15px;
+    gap: 5px;
+    cursor: pointer;
+    transition:all .3s  ;
+}
+
+.homePage3Blocks>div:hover{
+    transform: scale(1.05);
+    background-color: rgb(43, 152, 255);
+}
+
+.homePage3Blocks>div>img{
+    width: 90px;
+    height: auto;
+}
+
+.homePage3Blocks>div>h4{
+    color: rgb(47, 47, 47);
+    font-family: Manrope;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.homePage3Blocks>div>p{
+    color: rgb(247, 247, 247);
+    font-family: Manrope;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.homepage3Container>p{
+    font-family: Manrope;
+    color: white;
+    line-height: 1.2;
+}

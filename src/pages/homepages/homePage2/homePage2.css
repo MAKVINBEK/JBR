@@ -1,0 +1,55 @@
+.homePage2Conteiner{
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    margin-top: 80px;
+}
+
+.homepage2Block1>h2{
+    font-family: Manrope;
+    font-size: 40px;
+    color: rgb(8, 8, 8);
+    line-height: 1.1;
+}
+
+.homepage2Block1>p{
+    color: rgb(62, 62, 62);
+    font-family: Manrope;
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+.homepage2Block1>button{
+    max-width: 350px;
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    font-family: Manrope;
+    background: linear-gradient(45deg, rgb(108, 187, 248), #207ced);
+    color:white;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.homepage2Block1>button:hover{
+    background: linear-gradient(45deg, #207ced, rgb(108, 187, 248));
+}
+
+.homepage2Block2>img{
+    max-width: 600px;
+    width: 100%;
+}
+
+@media(max-width:860px){
+    .homePage2Conteiner{
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+    }
+}
