@@ -1,22 +1,13 @@
-import './whoHelp.css'
-import helpBaby from '../../img/helpBaby.png'
-import helpBaby1 from '../../img/helpBaby2.png'
-import helpBaby2 from '../../img/helpBaby3.png'
-import helpBaby3 from '../../img/helpBaby4.png'
-import helpBaby4 from '../../img/helpBaby5.png'
-import helpBaby5 from '../../img/helpBaby6.png'
-import helpBaby6 from '../../img/helpBaby7.png'
-import helpBaby7 from '../../img/helpBaby8.png'
-import { useState, useEffect } from "react";
-import WhoHelpBlock from './whoHelpBlock'
-import { data } from '../../data'
+import helpBaby from './img/helpBaby.png'
+import helpBaby1 from './img/helpBaby2.png'
+import helpBaby2 from './img/helpBaby3.png'
+import helpBaby3 from './img/helpBaby4.png'
+import helpBaby4 from './img/helpBaby5.png'
+import helpBaby5 from './img/helpBaby6.png'
+import helpBaby6 from './img/helpBaby7.png'
+import helpBaby7 from './img/helpBaby8.png'
 
-
-
-
-export default function WhoHelp () {
-
-    const [patients, setPatients] = useState ([
+ export const data = [
         {
             id:"1",
             name:'Сидоркин Макар',
@@ -121,34 +112,4 @@ export default function WhoHelp () {
             phone: '996773454508',
             rekvizity: '1234567890123455'
         },
-    ])
-
-    function getTimeLeft(deadline) {
-        const now = new Date();
-        const diff = new Date(deadline) - now;
-
-        return diff > 0 ? diff : 0;
-    }
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setPatients((prevPatients) =>
-                [...prevPatients].sort((a, b) => getTimeLeft(a.deadline) - getTimeLeft(b.deadline))
-            );
-        },);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    return (
-            <div className='WhoHelpContainer'>
-                    <h2>Наши подопечные</h2>
-
-                <div className='helpBlocks'>
-                {patients.map((patient) => (
-                        <WhoHelpBlock key={patient.id} dann={patient} />
-                ))}
-                </div>
-            </div>
-    )
-}
+    ]

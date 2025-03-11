@@ -9,6 +9,10 @@
     margin-top: 80px;
 }
 
+.homepage2Block1{
+    max-width: 550px;
+}
+
 .homepage2Block1>h2{
     font-family: Manrope;
     font-size: 40px;
@@ -51,5 +55,15 @@
         flex-direction: column-reverse;
         align-items: center;
         text-align: center;
+    }
+}
+
+@media(max-width:540px){
+    .homepage2Block1>h2{
+        font-size: 28px;
+    }
+
+    .homepage2Block1>p{
+        font-style: 14px;
     }
 }

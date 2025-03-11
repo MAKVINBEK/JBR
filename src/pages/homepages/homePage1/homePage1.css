@@ -39,7 +39,7 @@
 .homePageBlock1>h3{
     color: white;
     font-family: Manrope;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.2;
     z-index: 1;
 }
@@ -115,6 +115,34 @@
     .homePageBlock1>div>img{
         position: absolute;
         z-index: 0;
-        opacity: 0.8;
+        opacity: 0.7;
+    }
+}
+
+@media(max-width:420px){
+    .homePageBlock1>div>h2{
+        font-size: 30px;
+    }
+
+    .homePageBlock1>h3{
+        font-size: 14px;
+    }
+
+    .homePageBlock2>h2{
+        font-size: 26px;
+    }
+
+    .homePageBlock2>input{
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .homePageBlock2>button{
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .homePageBlock2>p{
+        font-size: 12px;
     }
 }

@@ -23,7 +23,7 @@ export default function Header () {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [true]);
+    }, [isActive]);
 
 
     return (
@@ -49,7 +49,7 @@ export default function Header () {
                         <p>+996 999 999 999</p>
                     </div>
                     <NavLink className="NavLinkHel" to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15}/></NavLink>
-                    <div ref={menuRef} className="burger"  onClick={() => setIsActive(!isActive)}>
+                    <div className="burger"  onClick={() => setIsActive(!isActive)}>
                         <Hamburger toggled={isActive} toggle={setIsActive} />
                     </div>
                 </div>

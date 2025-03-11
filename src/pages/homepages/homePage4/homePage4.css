@@ -18,7 +18,7 @@
     text-align: center;
 }
 
-.homepage4Container>h3{
+.homepage4Container>p{
     font-family: Manrope;
     font-size: 17px;
     text-align: center;
@@ -43,7 +43,7 @@
     font-size: 20px;
     color: darkblue;
     text-align: center;
-    line-height: 1.2;
+    line-height: 1;
 }
 
 .homePage4Blocks>div{
@@ -76,4 +76,41 @@
     text-align: center;
     font-family: Manrope;
     font-size: 12px;
+}
+
+@media(max-width:580px){
+
+    .homepage4Container>h2{
+        line-height: 1;
+        font-size: 30px;
+    }
+
+    .homepage4Container>p{
+        font-size: 16px;
+    }
+
+    .homepage4Container>div>p{
+        font-size: 18px;
+    }
+
+    .homePage4Blocks{
+        gap: 10px;
+    }
+
+    .homePage4Blocks>div{
+        padding: 15px 5px;
+        width: 45%;
+    }
+
+    .homePage4Blocks>div>img{
+        width: 60px;
+    }
+
+    .homePage4Blocks>div>h4{
+        font-size: 14px;
+    }
+
+    .homePage4Blocks>div>p{
+        font-size: 12px;
+    }
 }

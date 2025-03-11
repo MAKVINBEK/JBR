@@ -38,3 +38,17 @@
     text-align: center;
     color: rgb(255, 255, 255);
 }
+
+@media(max-width:550px){
+    .homePage6Container>h2{
+        font-size: 30px;
+    }
+
+    .homePage6Container>div{
+        gap: 10px;
+    }
+
+    .homePage6Container>div>img{
+        width: 48%;
+    }
+}

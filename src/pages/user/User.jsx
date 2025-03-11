@@ -7,6 +7,7 @@ const User = ()=> {
         <div className={css.content}>
         <div className={css.patientDetail}>
             <div className={css.patientDetailContainer}>
+                <div className={css.block1}>
                 <img src="https://fit4brain.com/wp-content/uploads/2015/02/carm-girl.jpg" alt="Фото пациента" />
                 <div className={css.patientBlock}>
                     <h3 className={css.name}>Быкова Есения</h3>
@@ -23,11 +24,19 @@ const User = ()=> {
                         <h4>СОБРАНО <br /> 1500 сом</h4>
                         <h4>НУЖНО <br />2500 сом </h4>
                     </div>
-                    <div className={css.requisites}>
-                        <h4>Реквизиты для помощи:396658646843518</h4>
-                        <p></p>
-                        <button >Скопировать реквизиты</button>
-                    </div>
+                </div>
+                </div>
+                <p className={css.oplata}>Помочь переводом</p>
+                <div className={css.cards}>
+                <a href="https://app.mbank.kg/qr/#00020101021132440012c2c.mbank.kg01020210129967734545081302125204999953034175911MUNARBEK%20K.630470b2" className="pay-button" >
+                    Оплатить через Mbank
+                </a>
+                <a className="pay-button" >
+                    Оплатить через Optima Bank
+                </a>
+                <a className="pay-button" >
+                    Оплатить через Demir Bank
+                </a>
                 </div>
             </div>
             <div className={css.patientDetailContainers}>

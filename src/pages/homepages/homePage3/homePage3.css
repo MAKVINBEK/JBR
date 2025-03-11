@@ -25,15 +25,14 @@
 
 .homePage3Blocks{
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap:20px 40px;
 }
 
 .homePage3Blocks>div{
-    width: 230px;
-    height: 260px;
+    max-width: 230px;
+    width: 100%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -73,4 +72,38 @@
     font-family: Manrope;
     color: white;
     line-height: 1.2;
+}
+
+@media(max-width:590px){
+    .homePage3Blocks{
+        gap: 10px;
+    }
+
+    .homePage3Blocks>div{
+        width: 48.8%;
+    }
+
+}
+
+@media(max-width:460px){
+    .homepage3Container>h2{
+        font-size: 28px;
+    }
+
+    .homePage3Blocks>div{
+        padding:10px 5px;
+        width: 48.3%;
+    }
+
+    .homePage3Blocks>div>img{
+        width: 60px;
+    }
+
+    .homePage3Blocks>div>h4{
+        font-size: 16px;
+    }
+
+    .homePage3Blocks>div>p{
+        font-size: 14px;
+    }
 }
