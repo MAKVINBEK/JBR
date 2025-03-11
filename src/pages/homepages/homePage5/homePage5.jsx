@@ -1,20 +1,20 @@
 import React from "react";
 import './homePage5.css'
+import Certificat1 from '../../../img/certificat1.jpg'
+import Certificat2 from '../../../img/certificat2.jpg'
+import Certificat3 from '../../../img/certificat3.jpg'
 
 
 export default function HomePage5 () {
     return (
         <div id="homePage5">
-            <div className="homePage5Container">
-                    <h2>Cвязаться прямо сейчас</h2>
-                    <p>Оставьте телефон номер и мы сами свяжемся с вами.</p>
+            <div className="homePage6Container">
+                <h2>Наши сертификаты</h2>
                 <div>
-                    <input type="text" placeholder="+996 (000) 000-000" />
-                    <button>Оставить</button>
+                    <img src={Certificat1} alt="" />
+                    <img src={Certificat2} alt="" />
+                    <img src={Certificat3} alt="" />
                 </div>
-                <p>Оставляя заявку, вы соглашаетесь на обработку персональных <br />
-                    данных и с условиями бронирования счёта.
-                </p>
             </div>
         </div>  
     )

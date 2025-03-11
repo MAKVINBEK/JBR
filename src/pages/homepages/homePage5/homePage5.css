@@ -2,76 +2,39 @@
     width: 100%;
     background: linear-gradient(45deg, rgb(0, 66, 159), #04abff);
     margin-top: 80px;
-}
-
-.homePage5Container{
-    max-width: 1280px;
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    text-align: center;
     padding: 50px 0;
 }
 
-.homePage5Container>h2{
-    color: white;
-    font-family: Manrope;
-    font-size: 40px;
-    line-height: 1.1;
+.homePage6Container{
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
 }
 
-.homePage5Container>p{
-    font-family: Manrope;
-    color: white;
-    text-align: center;
-}
-
-.homePage5Container>div{
+.homePage6Container>div{
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 30px;
 }
 
-.homePage5Container>div>input{
-    width: 250px;
-    height: 40px;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-}
-
-.homePage5Container>div>button{
-    width: 100px;
-    height: 40px;
-    border-radius: 10px;
+.homePage6Container>div>img{
+    transition: all .3s;
     cursor: pointer;
-    border: none;
+    width: 230px;
+}
+
+.homePage6Container>div>img:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgb(136, 136, 136);
+}
+
+.homePage6Container>h2{
     font-family: Manrope;
-    background: linear-gradient(45deg, rgb(14, 148, 251), #1677ee);
-    color: #fff;
-    transition: .3s;
-}
-
-.homePage5Container>div>button:hover{
-    background: linear-gradient(45deg, #1677ee, rgb(14, 148, 251));
-}
-
-@media(max-width:468px){
-    .homePage5Container{
-        gap: 15px;
-    }
-
-    .homePage5Container>div>button{
-        width: 100%;
-    }
-
-    .homePage5Container>div{
-        flex-direction: column;
-    }
-
-    .homePage5Container>h2{
-        font-size: 30px;
-    }
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 1.1;
+    text-align: center;
+    color: rgb(255, 255, 255);
 }

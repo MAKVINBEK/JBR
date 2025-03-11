@@ -33,6 +33,7 @@
     font-family: Manrope;
     font-size: 35px;
     line-height: 1.2;
+    z-index: 1;
 }
 
 .homePageBlock1>h3{
@@ -40,6 +41,7 @@
     font-family: Manrope;
     font-size: 15px;
     line-height: 1.2;
+    z-index: 1;
 }
 
 .homePageBlock2{
@@ -52,6 +54,7 @@
     font-family: Manrope;
     color: white;
     font-size: 30px;
+    z-index: 1;
 }
 
 .homePageBlock2>input{
@@ -63,6 +66,7 @@
     padding: 10px;
     font-family: Manrope;
     color: rgb(85, 85, 85);
+    z-index: 1;
 }
 
 .inputMask{
@@ -106,5 +110,11 @@
 
     .homePageBlock1>div{
         flex-direction: column;
+    }
+
+    .homePageBlock1>div>img{
+        position: absolute;
+        z-index: 0;
+        opacity: 0.8;
     }
 }

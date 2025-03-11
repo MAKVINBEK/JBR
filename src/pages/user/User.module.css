@@ -4,7 +4,7 @@
     min-height: 100vh;
     background-color: #e0e0e0;
     padding: 50px 0;
-    margin-top: -100px;
+    margin-top: -150px;
 }
 
 .patientDetail {
@@ -12,7 +12,7 @@
     width: 90%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
     gap: 30px;
 }
 
@@ -26,15 +26,39 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
 }
-.patientDetailContainers {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background: white;
+.patientDetailContainers{
     padding: 25px;
+    padding-top: 10px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+}
+
+.patientDetailContainers>h3{
+    text-align: center;
+    font-size: 24px;
+}
+
+.patientDetailContainers>div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.patientDetailContainers>div>div{
+    max-width: 200px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.patientDetailContainers>div>div>img{
+    width: 100%;
+}
+
+.patientDetailContainers>div>div>span{
+    font-family: manrope;
 }
 
 .patientDetailContainer:hover {
@@ -53,25 +77,6 @@
     object-fit: cover;
     border: 3px solid #0077cc;
 }
-.foto div {
-    display: flex;justify-content: center;
-    width: 100%;
-}
-
-.foto div img {
-    width: 280px;
-    height: 280px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 3px solid #0077cc;
-    margin: 0 auto;
-}
-
-.foto h4{
-    font-family: manrope;
-    font-size: 18px;
-    line-height: 1;
-}
 
 .patientBlock {
     display: flex;
@@ -80,24 +85,17 @@
     flex: 1;
 }
 
+.patientBlock4{
+    display: flex;justify-content: space-between;
+    font-family: Manrope;
+}
+
 .patientBlock1,
 .patientBlock2,
 .patientBlock4 {
     background: #f1f9ff;
     padding: 12px;
     border-radius: 8px;
-}
-
-span {
-    font-weight: bold;
-    color: #444;
-}
-
-h4 {
-    font-size: 16px;
-    color: #222;
-    margin: 5px 0;
-    font-family: Manrope;
 }
 
 progress {
@@ -116,24 +114,6 @@ progress::-webkit-progress-bar {
 progress::-webkit-progress-value {
     background: linear-gradient(to right, #00c3ff, #0077ff);
     border-radius: 6px;
-}
-
-.patientBlock4 {
-    display: flex;
-    justify-content: space-between;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-}
-
-.timer {
-    background: #ffeb3b;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    color: #222;
 }
 
 .requisites {
@@ -166,6 +146,21 @@ progress::-webkit-progress-value {
     background: #007a00;
 }
 
+.pdf-section {
+    margin-bottom: 20px;
+}
+
+.pdf-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+}
+
+.pdf-container embed {
+    border: 2px solid #007bff;
+    border-radius: 5px;
+}
+
 @media (max-width: 1000px){
     .patientDetail{
         grid-template-columns: 1fr;
@@ -182,23 +177,20 @@ progress::-webkit-progress-value {
         width: 100%;
         max-width: 300px;
     }
+}
 
-    .patientDetail{
-        grid-template-columns: 1fr;
+@media(max-width:430px){
+    .patientDetailContainers>div{
+        display: grid;
+        grid-template-columns: repeat(2 ,1fr);
+        gap: 10px;
     }
-}
 
-.pdf-section {
-    margin-bottom: 20px;
-}
+    .patientDetailContainers>div>div{
+        width: 100%;
+    }
 
-.pdf-container {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-}
-
-.pdf-container embed {
-    border: 2px solid #007bff;
-    border-radius: 5px;
+    .patientDetailContainers>div>div>span{
+        font-size: 14px;
+    }
 }
