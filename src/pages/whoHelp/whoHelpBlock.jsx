@@ -14,7 +14,7 @@ export default function WhoHelpBlock({ dann }) {
       <div>
         <h3>{dann.name}</h3>
         <p>
-          <span className="spanText">Диагноз:</span>
+          <strong className="spanText">Диагноз:</strong> 
           {dann.info}
         </p>
         <div className="Polzunok">

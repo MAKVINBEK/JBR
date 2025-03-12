@@ -48,6 +48,31 @@ export default function PatientDetail() {
   return (
     <div id="patientDetail">
       <div className="patientDetailContainer">
+      <div className="pddf">
+          <button
+            className="showDocsButton"
+            onClick={() => setShowDocuments(!showDocuments)}
+          >
+            {showDocuments ? "Скрыть документы" : "Показать документы"}
+          </button>
+
+          {showDocuments && (
+            <div className="documentsContainer">
+              {[pdfPatient1, pdfPatient2, pdfPatient3, pdfPatient5].map(
+                (doc, index) => (
+                  <img
+                    key={index}
+                    src={doc}
+                    alt={`Документ ${index + 1}`}
+                    id="pdfThumbnail"
+                    onClick={() => setEnlargedImage(doc)}
+                  />
+                )
+              )}
+            </div>
+          )}
+          <div></div>
+        </div>
         <div className="patientDetailBlock">
           <div className="imgBlock">
             <img src={img} alt="Фото пациента" />
@@ -87,31 +112,6 @@ export default function PatientDetail() {
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <button
-            className="showDocsButton"
-            onClick={() => setShowDocuments(!showDocuments)}
-          >
-            {showDocuments ? "Скрыть документы" : "Показать документы"}
-          </button>
-
-          {showDocuments && (
-            <div className="documentsContainer">
-              {[pdfPatient1, pdfPatient2, pdfPatient3, pdfPatient5].map(
-                (doc, index) => (
-                  <img
-                    key={index}
-                    src={doc}
-                    alt={`Документ ${index + 1}`}
-                    id="pdfThumbnail"
-                    onClick={() => setEnlargedImage(doc)}
-                  />
-                )
-              )}
-            </div>
-          )}
-          <div></div>
         </div>
       </div>
       {enlargedImage && (

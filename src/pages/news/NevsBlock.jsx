@@ -4,10 +4,9 @@ import news2 from '../news/newsIMg/news.png'
 import news4 from '../news/newsIMg/news2.png'
 import news1 from '../news/newsIMg/news1.png'
 import news3 from '../news/newsIMg/news3.png'
-import NewsBlocks from './NevsBlock'
 
 
-export default function News () {
+export default function NewsBlocks () {
 
     const newsDan = [
         {
@@ -48,15 +47,10 @@ export default function News () {
     ]
 
     return (
-        <div id='news'>
-            <div className='newsContainer'>
-                <div>
-                    <h2>Наши последние новости</h2> 
-                    <p>Ознакомьтесь с нашими  публикациями и отчётами по ситуации в Кыргызстане, <br />
-                     чтобы увидеть, как информация может привести к переменам.   </p>
+                <div className='newsBlock'>
+                    {newsDan.map((arr, index) => (
+                            <NewsBlock key={index} arr={arr}/>
+                        ))}
                 </div>
-                <NewsBlocks/>
-            </div>
-        </div>
     )
 }

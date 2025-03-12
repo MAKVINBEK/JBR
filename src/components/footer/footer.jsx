@@ -30,7 +30,7 @@ export default function Footer () {
                 <div>
                     <div>
                         <h4>Служба поддержки</h4>
-                        <p>+996 999 999 999</p>
+                        <a href="tel:+996 999 999 999">+996 999 999 999</a>
                     </div>
                     <NavLink to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15}/></NavLink>
                 </div>

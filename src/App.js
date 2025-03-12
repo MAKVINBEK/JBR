@@ -16,6 +16,7 @@ import User from './pages/user/User';
 import { ToastContainer, toast } from "react-toastify";
 import WhoHelpOplata from './pages/whoHelp/whoHelpOplata/whoHelpOplata';
 import ScrollToTop from './ScrollTop';
+import QRCodeScanner from './UrlQr';
 
 function App() {
 
@@ -26,8 +27,6 @@ function App() {
       {!hideHeaderRoutes.includes(location.pathname) && <Header />}
        <ScrollToTop/>
 <ToastContainer position="top-right" autoClose={3000} />
-
-
       <Routes>
         <Route path='/' element={<HomePages />} />
         <Route path='/whoToHelp' element={<WhoHelp />} />
@@ -41,6 +40,7 @@ function App() {
         <Route path='/qrCodePage' element={<User/>}/> 
         <Route path='/qr' element={<QRGenerator/>}/>
         <Route path='/whoHelpOplata/:name' element={<WhoHelpOplata/>}/>
+        <Route path='/url' element={<QRCodeScanner/>}/>
       </Routes>
       {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
     </div>

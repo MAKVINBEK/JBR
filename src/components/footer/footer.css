@@ -34,7 +34,7 @@
     line-height: 1;
 }
 
-.footerContainer>div:nth-child(3)>div>p{
+.footerContainer>div:nth-child(3)>div>a{
     color: rgb(3, 67, 141);
     font-family: Manrope;
     font-size: 14px;

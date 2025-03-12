@@ -5,9 +5,8 @@
 }
 
 .whoHelpBlock>div:nth-child(1){
-    width: 270px;
+    width: 100%;
     height: 200px;
-    overflow: hidden;
 }
 
 .whoHelpBlock>div:nth-child(1)>img{
@@ -32,6 +31,7 @@
     align-items: center;
     flex-direction: column;
     border-radius: 10px;
+    position: relative;
 }
 
 .WhoHelpContainer>h2{
@@ -42,8 +42,10 @@
 }
 
 .whoHelpBlock>div:nth-child(2){
-    width: 230px;
+    max-width: 230px;
+    width: 100%;
     height: 300px;
+    padding: 5px 0;
     box-shadow: 0px 0px 10px rgb(0, 29, 124);
     border-radius: 15px;
     display: flex;
@@ -51,8 +53,8 @@
     align-items: center;
     gap: 7px;
     z-index: 1;
-    position: relative;
-    top: -20px;
+    position: absolute;
+    top: 35%;
     background-color: white;
 }
 
@@ -81,10 +83,12 @@
     font-weight: 100;
     color: rgb(81, 81, 81);
     margin-left: 7px;
+    align-self: center;
 }
 
 .whoHelpBlock2>div{
-    width: 120px;
+    padding:2px 10px;
+    padding-left: 15px;
     font-family: Manrope;
     font-size: 15px;
     background-color: rgb(205, 205, 205);
@@ -96,7 +100,8 @@
 }
 
 .whoHelpBlock>:nth-child(2)>button{
-    width: 150px;
+    max-width: 150px;
+    width: 100%;
     height: 35px;
     margin-top: 5px;
     border-radius: 20px;
@@ -152,4 +157,93 @@ progress::-moz-progress-bar {
     align-items: center;
     cursor: pointer;
     gap: 5px;
+    margin-top: 5px;
 }
+
+@media(max-width:690px){
+    .WhoHelpContainer>h2{
+        font-size: 30px;
+    }
+
+    .whoHelpBlock{
+        width: 48%;
+    }
+
+    .helpBlocks{
+        gap: 10px;
+    }
+}
+
+@media(max-width:590px){
+
+    .whoHelpBlock2{
+        flex-direction: column;
+    }
+
+    .whoHelpBlock2>h4{
+        font-size: 12px;
+        align-self: start;
+    }
+
+    .whoHelpBlock2>div{
+        font-size: 13px;
+        max-width: 100px;
+        align-self: flex-end;
+    }
+
+    .Polzunok{
+        margin: 0;
+    }
+
+    .whoHelpBlock>div:nth-child(2)>p{
+        font-size: 10px;
+        white-space: wrap;
+    }
+
+    .info{
+        font-size: 10px;
+    }
+}
+
+@media(max-width:480px){
+
+    .whoHelpBlock{
+        height: 450px;;
+    }
+
+    .whoHelpBlock>div:nth-child(2){
+        height: auto;
+        max-width: 85%;
+    }
+
+    .whoHelpBlock{
+        width: 100%;
+    }
+
+    .whoHelpBlock2{
+        flex-direction: row;
+    }
+
+    .whoHelpBlock2>h4{
+        font-size: 14px;
+        align-self: start;
+    }
+
+    .whoHelpBlock2>div{
+        font-size: 14px;
+        max-width: 120px;
+    }
+
+    .Polzunok{
+        margin: 10px 0;
+    }
+
+    .whoHelpBlock>div:nth-child(2)>p{
+        font-size: 14px;
+    }
+
+    .info{
+        font-size: 14px;
+    }
+}
+
