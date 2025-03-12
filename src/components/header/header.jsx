@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 export default function Header () {
     const[isActive, setIsActive]=useState(false)
     const menuRef = useRef(null)
-    const close = useRef(null)
+    const [open, setOpen]=useState(false)
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -45,7 +45,7 @@ export default function Header () {
                         <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/contact">Контакты</NavLink>
                         </div>
                         <div className="bLKab">
-                            <button className="lKab">Войти</button>
+                        <button onClick={()=> setOpen(true)} className="lKab">Войти</button>
                         </div>
                 </div>
                 <div>
@@ -53,12 +53,26 @@ export default function Header () {
                         <h4>Служба поддержки</h4>
                         <a href="tel:+996 999 999 999">+996 999 999 999</a>
                     </div>
+                    {open && (
+        <div className="overlay">
+          <div className="cardKab">
+            <p>Вход предназначен только <br /> для нуждающихся!</p>
+            <div>
+              <button className="btn" onClick={() => setOpen(false)}>Назад</button>
+              <button className="btn">Продолжить</button>
+            </div>
+          </div>
+        </div>
+      )}
                     <NavLink className="NavLinkHel" to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15}/></NavLink>
+                    <button onClick={()=> setOpen(true)} className="lKab none">Войти</button>
                     <div className="burger"  onClick={() => setIsActive(!isActive)}>
                         <Hamburger toggled={isActive} toggle={setIsActive} />
                     </div>
                 </div>
             </div>
+
         </div>
+        
     )
 }
