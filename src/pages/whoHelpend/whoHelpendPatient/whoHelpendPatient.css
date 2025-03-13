@@ -81,6 +81,10 @@
 
 @media (max-width: 490px){
      .statusClosed{
-        font-size: 18px;
+        font-size: 16px;
+     }
+
+     .patientName{
+        font-size: 22px;
      }
 }

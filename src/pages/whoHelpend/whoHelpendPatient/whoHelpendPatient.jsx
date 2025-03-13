@@ -21,7 +21,7 @@ export default function WhoHelpendPatient() {
                     <img src={patient.img} alt={patient.name} className="patientImage" />
                 </div>
                 <div className="patientInfo">
-                    <h1 className="patientName">{patient.name}</h1>
+                    <p className="patientName">{patient.name}</p>
                     <p className="diagnosis"><strong>Диагноз:</strong> {patient.diagnoz}</p>
                     <p className="treatment">
                         <strong>Лечение:</strong> {patient.lechenia}

@@ -37,17 +37,7 @@ export default function Header() {
                         <h3>Добра</h3>
                     </div>
                 </NavLink>
-                <div className={isActive ? "servic noActive" : "servic"}>
-                    <div className="burM">
-                        <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/whoToHelp">Кому помочь</NavLink>
-                        <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/news">Новости</NavLink>
-                        <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/whoHelpend">Кому помогли</NavLink>
-                        <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/contact">Контакты</NavLink>
-                    </div>
-                    <div className="bLKab">
-                        <button onClick={() => setOpen(true)} className="lKab">Войти</button>
-                    </div>
-                </div>
+               
                 <div>
                     <div>
                         <h4>Служба поддержки</h4>
@@ -68,6 +58,20 @@ export default function Header() {
                     <button onClick={() => setOpen(true)} className="lKab none">Войти</button>
                     <div className="burger" onClick={() => setIsActive(!isActive)}>
                         <Hamburger toggled={isActive} toggle={setIsActive} />
+                    </div>
+                </div>
+            </div>
+            
+            <div className="topHed">
+            <div className={isActive ? "servic noActive" : "servic"}>
+                    <div className="burM">
+                        <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/whoToHelp">Кому помочь</NavLink>
+                        <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/news">Новости</NavLink>
+                        <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/whoHelpend">Кому помогли</NavLink>
+                        <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/contact">Контакты</NavLink>
+                    </div>
+                    <div className="bLKab">
+                        <button onClick={() => setOpen(true)} className="lKab">Войти</button>
                     </div>
                 </div>
             </div>

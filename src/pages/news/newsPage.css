@@ -86,6 +86,9 @@
     color: rgb(89, 89, 89);
     margin-bottom: 10px;
     font-family: Manrope;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .newsTitle {
@@ -135,5 +138,5 @@
 }
 
 @media(max-width:490px){
-    
+
 }

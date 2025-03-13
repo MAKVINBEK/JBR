@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./newsPage.css";
 import News from "./news";
 import NewsBlocks from "./NevsBlock";
+import { LuCalendar } from "react-icons/lu";
 
 export default function NewsPage() {
     const { state: news } = useLocation();
@@ -27,7 +28,7 @@ export default function NewsPage() {
             <div className="top">
                     <button className="backBtn" onClick={() => navigate(-1)}>← Назад</button>
                     <h1 className="newsTitle">{news.title}</h1>
-                    <h3 className="newsDate">{news.data}</h3>
+                    <h3 className="newsDate"><LuCalendar size={20}/>{news.data}</h3>
                 </div>
                 </div>
             <div className="newsContainerPage">

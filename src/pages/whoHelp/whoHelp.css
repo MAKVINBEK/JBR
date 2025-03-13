@@ -2,36 +2,32 @@
     max-width: 1280px;
     width: 90%;
     margin: 0 auto;
+    margin-top: 200px;
 }
 
 .whoHelpBlock>div:nth-child(1){
     width: 100%;
-    height: 200px;
 }
 
 .whoHelpBlock>div:nth-child(1)>img{
     width: 100%;
-    height: 100%;
+    height: 235px;
     object-fit: cover;
     border-radius: 10px;
 }
 
 .helpBlocks{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px 20px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap:20px;
     margin-top: 20px;
 }
 
 .whoHelpBlock{
-    width: 300px;
-    height: 550px;
     display: flex;
     align-items: center;
     flex-direction: column;
     border-radius: 10px;
-    position: relative;
 }
 
 .WhoHelpContainer>h2{
@@ -42,20 +38,17 @@
 }
 
 .whoHelpBlock>div:nth-child(2){
-    max-width: 230px;
-    width: 100%;
-    max-height: 300px;
-    height: 300px;
+    margin-top: -25px;
+    width: 90%;
+    height: 100%;
     padding: 5px 0;
-    box-shadow: 0px 0px 10px rgb(0, 29, 124);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.37);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 7px;
     z-index: 1;
-    position: absolute;
-    top: 40%;
     background-color: white;
 }
 
@@ -152,7 +145,7 @@ progress::-moz-progress-bar {
 .info{
     color: #013ec4;
     font-family: Manrope;
-    font-size: 13px;
+    font-size: 14px;
     text-decoration: underline;
     display: flex;
     align-items: center;
@@ -161,15 +154,26 @@ progress::-moz-progress-bar {
     margin-top: 5px;
 }
 
-@media(max-width:690px){
+@media(max-width:1000px){
+    .helpBlocks{
+        grid-template-columns: 1fr 1fr 1fr ;
+    }
+
+    .WhoHelpContainer{
+        margin-top: 150px;
+    }
+}
+
+@media(max-width:800px){
+    .helpBlocks{
+        grid-template-columns: 1fr 1fr ;
+    }
+}
+
+@media(max-width:720px){
     .WhoHelpContainer>h2{
         font-size: 30px;
     }
-
-    .whoHelpBlock{
-        width: 48%;
-    }
-
     .helpBlocks{
         gap: 10px;
     }
@@ -182,13 +186,13 @@ progress::-moz-progress-bar {
     }
 
     .whoHelpBlock2>h4{
-        font-size: 12px;
+        font-size: 14px;
         align-self: start;
     }
 
     .whoHelpBlock2>div{
-        font-size: 13px;
-        max-width: 100px;
+        font-size: 14px;
+        max-width: 110px;
         align-self: flex-end;
     }
 
@@ -197,54 +201,31 @@ progress::-moz-progress-bar {
     }
 
     .whoHelpBlock>div:nth-child(2)>p{
-        font-size: 10px;
-        white-space: wrap;
+        font-size: 12px;
     }
 
     .info{
-        font-size: 10px;
+        font-size: 12px;
     }
 }
 
-@media(max-width:480px){
+@media(max-width:490px){
 
-    .whoHelpBlock{
-        height: 450px;;
+    .WhoHelpContainer>h2{
+        font-size: 24px;
     }
 
-    .whoHelpBlock>div:nth-child(2){
-        height: auto;
-        max-width: 85%;
-    }
-
-    .whoHelpBlock{
-        width: 100%;
+    .helpBlocks{
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     .whoHelpBlock2{
         flex-direction: row;
     }
 
-    .whoHelpBlock2>h4{
-        font-size: 14px;
-        align-self: start;
-    }
-
-    .whoHelpBlock2>div{
-        font-size: 14px;
-        max-width: 120px;
-    }
-
     .Polzunok{
         margin: 10px 0;
-    }
-
-    .whoHelpBlock>div:nth-child(2)>p{
-        font-size: 14px;
-    }
-
-    .info{
-        font-size: 14px;
     }
 }
 

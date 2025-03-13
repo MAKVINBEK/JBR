@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 
 const Registr = ()=> {
     return(
+        <div className={css.margin}>
         <form className={css.contentLogin}>
     <h2>Регистрация</h2>
     <h3>Введите ваш логин и пароль</h3>
@@ -14,7 +15,7 @@ const Registr = ()=> {
     <button type="submit" variant="contained">Регистрация</button>
     <p>У вас нет аккаунта?<NavLink to="/login">Авторизация</NavLink></p>
 </form>
-
+</div>
     )
 }
 

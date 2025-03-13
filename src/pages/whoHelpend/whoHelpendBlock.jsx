@@ -11,9 +11,7 @@ export default function WhoHelpendBlock ({date}) {
 
     return (
         <div id='whoHelpedBlock'>
-                <div>
                     <img src={date.img} alt="" />
-                </div>
                 <div>
                     <h3>{date.name}</h3>
                     <p><span>Диагноз:</span>{date.info}</p>
