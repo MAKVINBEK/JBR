@@ -9,30 +9,29 @@ import social4 from '../../img/icons4.png'
 import { NavLink } from "react-router-dom";
 
 
-export default function Footer () {
+export default function Footer() {
     return (
         <div id="footer">
             <div className="footerContainer">
-                    <NavLink to="/" className="NavLink logo">
-                        <img className="logoImg" src={logo}/> 
-                        <div className="logoCompanyH3">
-                            <h3>Единый</h3>
-                            <h3>Реестр</h3>
-                            <h3>Добра</h3>
-                        </div>
-                    </NavLink>
-                    <div>
-                        <img src={socila1} alt="" />
-                        <img src={social2} alt="" />
-                        <img src={social3} alt="" />
-                        <img src={social4} alt="" />
+                <NavLink to="/" className="NavLink logo">
+                    <img className="logoImg" src={logo} />
+                    <div className="logoCompanyH3">
+                        <h3>Единый</h3>
+                        <h3>Реестр</h3>
+                        <h3>Добра</h3>
                     </div>
+                </NavLink>
+                <div className="futMenu">
+                    <NavLink  className={"futLink"} to="/whoToHelp">Кому помочь</NavLink>
+                    <NavLink  className={"futLink"} to="/news">Новости</NavLink>
+                    <NavLink  className={"futLink"} to="/whoHelpend">Кому помогли</NavLink>
+                    <NavLink  className={"futLink"} to="/contact">Контакты</NavLink>
+                </div>
                 <div>
-                    <div>
-                        <h4>Служба поддержки</h4>
-                        <a href="tel:+996 999 999 999">+996 999 999 999</a>
-                    </div>
-                    <NavLink to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15}/></NavLink>
+                    <img src={socila1} alt="" />
+                    <img src={social2} alt="" />
+                    <img src={social3} alt="" />
+                    <img src={social4} alt="" />
                 </div>
             </div>
         </div>

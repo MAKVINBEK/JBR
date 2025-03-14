@@ -54,7 +54,7 @@ export default function Header() {
                             </div>
                         </div>
                     )}
-                    <NavLink className="NavLinkHel" to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15} /></NavLink>
+                    <NavLink className="NavLinkHel none" to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15} /></NavLink>
                     <button onClick={() => setOpen(true)} className="lKab none">Войти</button>
                     <div className="burger" onClick={() => setIsActive(!isActive)}>
                         <Hamburger toggled={isActive} toggle={setIsActive} />
@@ -71,6 +71,7 @@ export default function Header() {
                         <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/contact">Контакты</NavLink>
                     </div>
                     <div className="bLKab">
+                    <NavLink className="NavLinkHel" to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15} /></NavLink>
                         <button onClick={() => setOpen(true)} className="lKab">Войти</button>
                     </div>
                 </div>
