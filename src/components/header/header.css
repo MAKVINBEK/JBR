@@ -25,6 +25,7 @@
 .topHed{
     width: 100%;
     padding: 22px 0;
+    padding-top: 10%;
     background: linear-gradient(45deg, #007BFF, #0056b3);
 }
 
@@ -242,6 +243,7 @@
         background: rgba(255, 255, 255, 0.677);
         backdrop-filter: blur(30px);
         padding: 80px 50px 30px 20px;
+        padding-bottom: 5%;
         transition: .3s ease;
         display: flex;
         flex-direction: column;

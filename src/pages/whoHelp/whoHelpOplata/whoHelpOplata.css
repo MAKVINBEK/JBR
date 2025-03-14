@@ -7,6 +7,7 @@
     max-width: 400px;
     width: 100%;
     margin: 0 auto;
+    margin-top: 200px;
   }
   
   .whoHelpOplataContainer h2 {
@@ -68,6 +69,12 @@
   
   .pay-button:hover {
     background: #218838;
+  }
+
+  @media (max-width: 1000px){
+    .whoHelpOplataContainer{
+      margin-top: 150px;
+    }
   }
   
   @media (max-width: 480px) {
