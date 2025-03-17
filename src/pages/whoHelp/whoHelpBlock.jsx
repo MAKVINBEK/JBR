@@ -1,5 +1,5 @@
 import "./whoHelp.css";
-import donat from "../../img/donat.png";
+import donat from '../../img/logo6.png'
 import { BsHandIndex } from "react-icons/bs";
 import { NavLink, useNavigate } from "react-router-dom";
 import data from "../../data";

@@ -201,7 +201,6 @@ progress::-webkit-progress-value {
 
     .patientDetailContainer img {
         width: 100%;
-        max-width: 300px;
     }
 }
 

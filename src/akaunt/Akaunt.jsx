@@ -79,6 +79,7 @@ const Ak = () => {
               <span>ФИО: Абдрахманов Еркин  Аскатович</span>
             </div>
           </div>
+          <button className={css.btns}>Добавить <GrAddCircle /></button>
           <div className={css.pilus}><GrAddCircle /></div>
           </div>
           

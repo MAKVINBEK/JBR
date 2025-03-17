@@ -91,14 +91,36 @@
 }
 
 .flexx{
-    display: grid;
-    grid-template-columns: 90% 10%;
+    display:flex;
+    gap: 10px;
 }
 
 .pilus{
     font-size: 70px;
     color:#00a300;
     margin-top: 55px;
+    display: block;
+}
+
+.btns{
+    height: 40px;
+    max-width: 300px;
+    width: 100%;
+    border: none;
+    background-color:white;
+    border: 2px solid #00a300;
+    color: #007a00;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: .3s;
+    cursor: pointer;
+    display: none;
+}
+
+.btns:hover{
+    color: white;
+    background-color: #00a300;
 }
 
 .wrapp {
@@ -231,15 +253,29 @@ progress::-webkit-progress-value {
 
     .patientDetailContainer img {
         width: 100%;
-        max-width: 300px;
     }
 }
 
 @media(max-width:430px){
-    .patientDetailContainers>div{
+
+    .flexx{
+        flex-direction:column-reverse;
+    }
+
+    .pilus{
+        display: none;
+    }
+
+    .btns{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .wrapp{
         display: grid;
-        grid-template-columns: repeat(2 ,1fr);
-        gap: 10px;
+        grid-template-columns: 1fr 1fr;
     }
 
     .patientDetailContainers>div>div{

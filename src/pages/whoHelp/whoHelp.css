@@ -112,8 +112,9 @@
 
 .whoHelpBlock>:nth-child(2)>button>img{
     width: 30px;
-    background-color: rgb(111, 190, 255);
     border-radius: 50px;
+    background-color: white;
+    padding: 2px;
 }
 
 .Polzunok {

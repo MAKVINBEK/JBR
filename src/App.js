@@ -23,7 +23,7 @@ import Ak from './akaunt/Akaunt';
 function App() {
 
   const location = useLocation();
-  const hideHeaderRoutes = ["/qrCodePage", "/login", "/registr", "/ak"];
+  const hideHeaderRoutes = ["/qrCodePage", "/login", "/registr", "/akaunt"];
   return (
     <div className="App">
       {!hideHeaderRoutes.includes(location.pathname) && <Header />}
@@ -44,7 +44,7 @@ function App() {
         <Route path='/whoHelpOplata/:name' element={<WhoHelpOplata/>}/>
         <Route path='/url' element={<QRCodeScanner/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/ak' element={<Ak/>}/>
+        <Route path='/akaunt' element={<Ak/>}/>
       </Routes>
       {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
     </div>
