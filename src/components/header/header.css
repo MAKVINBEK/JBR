@@ -133,6 +133,7 @@
     display: none !important;
     color: #636464;
     z-index: 2;
+    cursor: pointer;
 }
 
 .bLKab {

@@ -27,8 +27,8 @@ export default function Header() {
 
 
     return (
-        <div id="header">
-            <div ref={menuRef} id="headerContainer">
+        <div ref={menuRef} id="header">
+            <div id="headerContainer">
                 <NavLink onClick={() => setIsActive(false)} className="logo" to="/">
                     <img className="logoImg" src={logo} />
                     <div className="logoCompanyH3">
@@ -71,7 +71,7 @@ export default function Header() {
                         <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/contact">Контакты</NavLink>
                     </div>
                     <div className="bLKab">
-                    <NavLink className="NavLinkHel" to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15} /></NavLink>
+                    <NavLink onClick={() => setIsActive(false)} className="NavLinkHel" to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15} /></NavLink>
                         <button onClick={() => setOpen(true)} className="lKab">Войти</button>
                     </div>
                 </div>

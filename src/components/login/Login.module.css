@@ -40,7 +40,11 @@
     margin-top: 25px;
 }
 
-.contentLogin button{
+.contentLogin .int button{
+    transition: .3s;
+}
+
+.button{
     height: 40px;
     max-width: 300px;
     width: 100%;
@@ -59,14 +63,6 @@
 .contentLogin button:hover{
     color: white;
     background-color: royalblue;
-}
-
-.contentLogin p{
-    margin-top: 20px;
-}
-
-.contentLogin p a{
-    color:royalblue;
 }
 
 @media(max-width:490px){

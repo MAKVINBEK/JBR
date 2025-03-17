@@ -17,13 +17,13 @@ import { ToastContainer, toast } from "react-toastify";
 import WhoHelpOplata from './pages/whoHelp/whoHelpOplata/whoHelpOplata';
 import ScrollToTop from './ScrollTop';
 import QRCodeScanner from './UrlQr';
-import Login from './login/Login';
-import Registr from './registr/Registr';
+import Login from './components/login/Login';
+import Ak from './akaunt/Akaunt';
 
 function App() {
 
   const location = useLocation();
-  const hideHeaderRoutes = ["/qrCodePage", "/login", "/registr"];
+  const hideHeaderRoutes = ["/qrCodePage", "/login", "/registr", "/ak"];
   return (
     <div className="App">
       {!hideHeaderRoutes.includes(location.pathname) && <Header />}
@@ -44,7 +44,7 @@ function App() {
         <Route path='/whoHelpOplata/:name' element={<WhoHelpOplata/>}/>
         <Route path='/url' element={<QRCodeScanner/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/registr' element={<Registr/>}/>
+        <Route path='/ak' element={<Ak/>}/>
       </Routes>
       {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
     </div>

@@ -1,7 +1,8 @@
 .payment-container {
     max-width: 400px;
     width: 90%;
-    margin: 50px auto;
+    margin: 0px auto;
+    margin-top: 200px;
     padding: 20px;
     background: #f9f9f9;
     border-radius: 10px;
@@ -66,4 +67,10 @@ input, textarea {
 
 .pay-button:hover {
     background: #457aa0;
+}
+
+@media(max-width:1000px){
+    .payment-container{
+        margin-top: 150px;
+    }
 }

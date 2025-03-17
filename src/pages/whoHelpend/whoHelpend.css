@@ -10,6 +10,7 @@
     height: 235px;
     object-fit: cover;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .helpendBlocks{
@@ -69,6 +70,7 @@
     font-size: 14px;
     text-decoration: underline;
     color: green;
+    cursor: pointer;
 }
 
 @media(max-width:1000px){

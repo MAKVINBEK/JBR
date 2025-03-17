@@ -11,7 +11,7 @@ export default function WhoHelpendBlock ({date}) {
 
     return (
         <div id='whoHelpedBlock'>
-                    <img src={date.img} alt="" />
+                    <img onClick={() => navigate(`/patienthelpend/${date.id}`, {state: date})} src={date.img} alt="" />
                 <div>
                     <h3>{date.name}</h3>
                     <p><span>Диагноз:</span>{date.info}</p>

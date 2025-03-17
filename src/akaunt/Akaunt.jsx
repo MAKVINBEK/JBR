@@ -1,14 +1,15 @@
-import css from "./User.module.css"
-import bakay from "../../img/bakay.png"
-import foto from "../../img/helpBaby7.png"
-import foto1 from "../../img/helpBaby5.png"
-import foto2 from "../../img/helpBaby6.png"
+import css from "./Akaunt.module.css"
+import bakay from "../img/bakay.png"
+import foto from "../img/helpBaby7.png"
+import foto1 from "../img/helpBaby5.png"
+import foto2 from "../img/helpBaby6.png"
 import { useState } from "react"
+import { GrAddCircle } from "react-icons/gr";
 
 
 const images = [foto, foto1, foto2]
 
-const User = () => {
+const Ak = () => {
   const [img, setImg] = useState(images[0])
   const progrest = (parseInt(1500) / parseInt(2500) * 100)
   return (
@@ -41,27 +42,22 @@ const User = () => {
                 <h4>НУЖНО <br />2500 сом </h4>
               </div>
               </div>
+              <button className={css.btn}>Добавить сумму</button>
             </div>
           </div>
-          <p className={css.oplata}>Помочь</p>
+          <p className={css.oplata}>Ваши реквезиты</p>
           <div className={css.cards}>
             <a href="https://app.mbank.kg/qr/#00020101021132440012c2c.mbank.kg01020210129967734545081302125204999953034175911MUNARBEK%20K.630470b2" >
-              <img src="https://mbank.kg/media/logo/mbank_logo_full_E3tUOOl.png" alt="" />
-            </a>
-            <a  >
-              <img src={bakay} alt="" />
-            </a>
-            <a >
-              <img src="https://www.deposit.kg/wp-content/uploads/2025/01/logo_obank_dark-1.png" alt="" />
-            </a>
-            <a  >
-              <img src="https://export.gov.kg/assets/bashkaruu/img/providers/bakay_bank_67.png" alt="" />
-            </a>
+              <img src="https://mbank.kg/media/logo/mbank_logo_full_E3tUOOl.png" alt="" /></a>
+            <a> <img src={bakay} alt="" /></a>
+            <a > <img src="https://www.deposit.kg/wp-content/uploads/2025/01/logo_obank_dark-1.png" alt="" /></a>
+            <a  ><img src="https://export.gov.kg/assets/bashkaruu/img/providers/bakay_bank_67.png" alt="" /></a>
           </div>
         </div>
         <div className={css.patientDetailContainers}>
           <h3>Валантеры</h3>
-          <div>
+          <div className={css.flexx}>
+            <div className={css.wrapp}>
             <div>
               <img src="https://img.freepik.com/free-photo/portrait-handsome-young-man-closeup_176420-15568.jpg?semt=ais_hybrid" alt="Фото валантера" />
               <span>ФИО: Абдрахманов Еркин  Аскатович</span>
@@ -83,10 +79,13 @@ const User = () => {
               <span>ФИО: Абдрахманов Еркин  Аскатович</span>
             </div>
           </div>
+          <div className={css.pilus}><GrAddCircle /></div>
+          </div>
+          
         </div>
       </div>
     </div>
   )
 }
 
-export default User
+export default Ak
