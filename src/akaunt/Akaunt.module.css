@@ -256,7 +256,7 @@ progress::-webkit-progress-value {
     }
 }
 
-@media(max-width:430px){
+@media(max-width:480px){
 
     .flexx{
         flex-direction:column-reverse;
@@ -286,7 +286,9 @@ progress::-webkit-progress-value {
         font-size: 14px;
     }
 
-    
+    .btns{
+        align-self: center;
+    }
 
     .cards a{
         font-size: 14px;
