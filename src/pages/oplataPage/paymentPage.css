@@ -16,27 +16,6 @@ h2 {
     color: #333;
 }
 
-.input-group {
-    display: flex;
-    align-items: center;
-    background: white;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.input-group .icon {
-    margin-right: 10px;
-    color: #4c63af;
-}
-
-input, textarea {
-    width: 100%;
-    border: none;
-    outline: none;
-    font-size: 16px;
-}
 
 .amount-selection button {
     padding: 10px;

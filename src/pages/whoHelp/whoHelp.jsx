@@ -9,9 +9,7 @@ import helpBaby6 from '../../img/helpBaby7.png'
 import helpBaby7 from '../../img/helpBaby8.png'
 import { useState, useEffect } from "react";
 import WhoHelpBlock from './whoHelpBlock'
-import { data } from '../../data'
-
-
+import { TbZoom } from "react-icons/tb";
 
 
 export default function WhoHelp () {
@@ -122,6 +120,11 @@ export default function WhoHelp () {
             rekvizity: '1234567890123455'
         },
     ])
+    const [value,setValue]= useState("")
+
+    const filteredCountries = patients.filter(country =>{
+        return country.name.toLowerCase().includes(value.toLowerCase())
+    })
 
     function getTimeLeft(deadline) {
         const now = new Date();
@@ -143,9 +146,14 @@ export default function WhoHelp () {
     return (
             <div className='WhoHelpContainer'>
                     <h2>Наши подопечные</h2>
-
+                    <div className='serch'>
+                    <TbZoom />
+                    <input
+                    type="text" placeholder='пойск...' className='poisk_serch'
+                    onChange={(event) => setValue(event.target.value)}/></div>
+                    
                 <div className='helpBlocks'>
-                {patients.map((patient) => (
+                {filteredCountries.map((patient) => (
                         <WhoHelpBlock key={patient.id} dann={patient} />
                 ))}
                 </div>

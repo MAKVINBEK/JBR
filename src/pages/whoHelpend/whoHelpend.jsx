@@ -8,6 +8,8 @@ import helpenBaby6 from '../whoHelpend/whoHelpendImg/helpendBaby6.png'
 import helpenBaby7 from '../whoHelpend/whoHelpendImg/helpendBaby7.png'
 import helpenBaby8 from '../whoHelpend/whoHelpendImg/helpendBaby8.png'
 import WhoHelpendBlock from './whoHelpendBlock'
+import { useState } from 'react'
+import { TbZoom } from "react-icons/tb";
 
 
 
@@ -81,12 +83,23 @@ export default function WhoHelpend () {
         },
     ]
 
+    const [value,setValue]= useState("")
+    
+        const filteredCountries = HelpendDan.filter(country =>{
+            return country.name.toLowerCase().includes(value.toLowerCase())
+        })
+
     return(
         <div id='whoHelpend'>
             <div id='whoHelpendContainer'>
                     <h2>Кому помогли</h2>
+                    <div className='serch'>
+                                        <TbZoom />
+                                        <input
+                                        type="text" placeholder='пойск...' className='poisk_serch'
+                                        onChange={(event) => setValue(event.target.value)}/></div>
                 <div className='helpendBlocks'>
-                    {HelpendDan.map((date, index) => (
+                    {filteredCountries.map((date, index) => (
                             <WhoHelpendBlock key={index} date={date}/>
                         ))}
                 </div>
