@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./whoHelpendPatient.css";
+import foto from "../../../img/helpBaby7.png"
+import foto1 from "../../../img/helpBaby5.png"
+import foto2 from "../../../img/helpBaby6.png"
+
+const images = [foto, foto1, foto2]
 
 export default function WhoHelpendPatient() {
     const { state: patient } = useLocation();
     const navigate = useNavigate();
+    const [img, setImg] = useState(images[0])
 
     if (!patient) {
         return (
@@ -17,17 +23,22 @@ export default function WhoHelpendPatient() {
 
     return (
         <div className="whoHelpendContainer">
-                <div className="imageContainer">
-                    <img src={patient.img} alt={patient.name} className="patientImage" />
-                </div>
+                <div className="imgBlock">
+            <img className="img1" src={img} alt="Фото пациента" />
+            <div>
+              {images.map((el, index) => (
+                <img key={index} src={el} onClick={() => setImg(el)} />
+              ))}
+            </div>
+          </div>
                 <div className="patientInfo">
                     <p className="patientName">{patient.name}</p>
                     <p className="diagnosis"><strong>Диагноз:</strong> {patient.diagnoz}</p>
                     <p className="treatment">
                         <strong>Лечение:</strong> {patient.lechenia}
                     </p>
-                    <div className="statusClosed">
-                        <h2>{patient.sbor}</h2>
+                    <div className='closed-text tt'>
+                        {patient.sbor}
                     </div>
                     <button className="backButton" onClick={() => navigate(-1)}>Назад</button>
                 </div>

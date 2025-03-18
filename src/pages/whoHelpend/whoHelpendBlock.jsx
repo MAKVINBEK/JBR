@@ -11,15 +11,20 @@ export default function WhoHelpendBlock ({date}) {
 
     return (
         <div id='whoHelpedBlock'>
-                    <img onClick={() => navigate(`/patienthelpend/${date.id}`, {state: date})} src={date.img} alt="" />
-                <div>
-                    <h3>{date.name}</h3>
+                  <div className='b11'><img onClick={() => navigate(`/patienthelpend/${date.id}`, {state: date})} src={date.img} alt="" /></div>  
+                <div className='b22'>
+                    <div>
+                        <h3>{date.name}</h3>
                     <p><span>Диагноз:</span>{date.info}</p>
-                    <h3>{date.sbor}</h3>
+                    </div>
+                    <div>
+                        <div className='closed-text'>{date.sbor}</div>
                     <h4 className='infoHelpend'
                         onClick={() => navigate(`/patienthelpend/${date.id}`, {state: date})}>
                         Подробнее<BsHandIndex />
                     </h4>
+                    </div>
+                    
                 </div>
         </div>
     )
