@@ -3,7 +3,6 @@
     width: 90%;
     margin: 0 auto;
     margin-top: 200px;
-    padding-top: 60px;
     position: relative;
 }
 
@@ -23,6 +22,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
+
 }
 
 #whoHelpedBlock{
@@ -36,7 +36,7 @@
     font-size: 35px;
     color: rgb(0, 139, 25);
     line-height: 1;
-    margin-bottom: 20px;
+    margin-bottom: 120px;
 }
 
 .b22{
@@ -104,17 +104,19 @@
     cursor: pointer;
 }
 
-@media(max-width:1000px){
+@media(max-width:1100px){
     .helpendBlocks{
         grid-template-columns: 1fr 1fr 1fr ;
     }
+}
 
+@media(max-width:1000px){
     #whoHelpendContainer{
         margin-top: 150px;
     }
 }
 
-@media(max-width:800px){
+@media(max-width:850px){
     .helpendBlocks{
         grid-template-columns: 1fr 1fr ;
     }
@@ -127,16 +129,16 @@
 }
 
 @media(max-width:590px){
-
     .b22>p{
         font-size: 12px;
     }
 }
 
-@media(max-width:490px){
+@media(max-width:510px){
 
     #whoHelpendContainer>h2{
         font-size: 24px;
+        margin-bottom: 100px;
     }
 
     .helpendBlocks{

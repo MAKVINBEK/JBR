@@ -40,7 +40,7 @@
     color: rgb(57, 57, 57);
 }
 
-@media(max-width:760px){
+@media(max-width:830px){
 
     .footerContainer{
         flex-direction: column;

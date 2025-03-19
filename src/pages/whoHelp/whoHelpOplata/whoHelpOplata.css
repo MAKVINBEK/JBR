@@ -30,21 +30,6 @@
     flex-wrap: wrap;
   }
   
-  .whoHelpOplata-buttons button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
-  }
-  
-  .whoHelpOplata-buttons button:hover {
-    background: #0056b3;
-  }
-  
   input[type="number"] {
     width: 100%;
     padding: 12px;
@@ -53,22 +38,6 @@
     border-radius: 8px;
     text-align: center;
     margin: 15px 0;
-  }
-  
-  .pay-button {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    width: 100%;
-    transition: 0.3s;
-  }
-  
-  .pay-button:hover {
-    background: #218838;
   }
 
   @media (max-width: 1000px){

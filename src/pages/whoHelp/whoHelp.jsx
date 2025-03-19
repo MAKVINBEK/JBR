@@ -24,7 +24,7 @@ export default function WhoHelp () {
             sobr: '5 000 000',
             sobrano: '3 350 150',
             img: helpBaby,
-            deadline: "2025-04-02T23:59:59",
+            deadline: "2025-04-02",
             phone: '996773454508',
             rekvizity: '1234567890123455'
         },
@@ -37,7 +37,7 @@ export default function WhoHelp () {
             sobr: '50000',
             sobrano: '21323',
             img: helpBaby1,
-            deadline: "2024-03-03T23:59:59",
+            deadline: "",
             phone: '996773454508',
             rekvizity: '1234567890123455'
         },
@@ -50,7 +50,7 @@ export default function WhoHelp () {
             sobr: '5000000',
             sobrano: '540000',
             img: helpBaby2,
-            deadline: "2024-03-01T23:59:59",
+            deadline: "2024-03-01",
             phone: '996773454508',
             rekvizity: '1234567890123455'
         },
@@ -63,7 +63,7 @@ export default function WhoHelp () {
             sobr: '3000000',
             sobrano: '998045',
             img: helpBaby3,
-            deadline: "2024-03-05T23:59:59",
+            deadline: "2024-03-05",
             phone: '996773454508',
             rekvizity: '1234567890123455'
         },
@@ -76,7 +76,7 @@ export default function WhoHelp () {
             sobr: '150000',
             sobrano: '103500',
             img: helpBaby4,
-            deadline: "2024-03-04T23:59:59",
+            deadline: "2024-03-04",
             phone: '996773454508',
             rekvizity: '1234567890123455'
         },
@@ -89,7 +89,7 @@ export default function WhoHelp () {
             sobr: '68000',
             sobrano: '31440',
             img: helpBaby5,
-            deadline: "2026-03-06T23:59:59",
+            deadline: "2026-03-06",
             phone: '996773454508',
             rekvizity: '1234567890123455'
         },
@@ -102,7 +102,7 @@ export default function WhoHelp () {
             sobr: '129000',
             sobrano: '30150',
             img: helpBaby6,
-            deadline: "2024-03-07T23:59:59",
+            deadline: "2024-03-07",
             phone: '996773454508',
             rekvizity: '1234567890123455'
         },
@@ -115,7 +115,7 @@ export default function WhoHelp () {
             sobr: '149400',
             sobrano: '127225',
             img: helpBaby7,
-            deadline: "2024-03-08T23:59:59",
+            deadline: "2024-03-08",
             phone: '996773454508',
             rekvizity: '1234567890123455'
         },
@@ -135,13 +135,15 @@ export default function WhoHelp () {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setPatients((prevPatients) =>
-                [...prevPatients].sort((a, b) => getTimeLeft(a.deadline) - getTimeLeft(b.deadline))
+            setPatients(prevPatients =>
+                prevPatients
+                    .slice() 
+                    .sort((a, b) => getTimeLeft(a.deadline) - getTimeLeft(b.deadline))
             );
-        },);
-
+        }, 1000); 
+    
         return () => clearInterval(interval);
-    }, []);
+    }, [patients]); 
 
     return (
             <div className='WhoHelpContainer'>
