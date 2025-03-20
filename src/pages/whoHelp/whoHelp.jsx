@@ -7,6 +7,7 @@ import helpBaby4 from '../../img/helpBaby5.png'
 import helpBaby5 from '../../img/helpBaby6.png'
 import helpBaby6 from '../../img/helpBaby7.png'
 import helpBaby7 from '../../img/helpBaby8.png'
+import ali from "../../img/ali — копия.jpg"
 import { useState, useEffect } from "react";
 import WhoHelpBlock from './whoHelpBlock'
 import { TbZoom } from "react-icons/tb";
@@ -15,6 +16,19 @@ import { TbZoom } from "react-icons/tb";
 export default function WhoHelp () {
 
     const [patients, setPatients] = useState ([
+        {
+            id:"0",
+            name:'Ali Umbetaliev',
+            info:"Выраженный подклапанный стеноз аорты. Мышечный дефект межжелудочковой перегородки",
+            diagnoz: '2 года., Выраженный подклапанный стеноз аорты. Мышечный дефект межжелудочковой перегородки (рестриктивный). Митральная недостаточность 2 степени.',
+            lechenia: 'Операция в клинике Boston Childrens Операция в клинике Boston Childrens Hospital, США (частичный сбор).',
+            sobr: '5 000 000',
+            sobrano: '3 350 150',
+            img: ali,
+            deadline: "2024-04-02",
+            phone: '996773454508',
+            rekvizity: '1234567890123455'
+        },
         {
             id:"1",
             name:'Сидоркин Макар',

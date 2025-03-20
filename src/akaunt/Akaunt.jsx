@@ -3,8 +3,10 @@ import bakay from "../img/bakay.png"
 import foto from "../img/helpBaby7.png"
 import foto1 from "../img/helpBaby5.png"
 import foto2 from "../img/helpBaby6.png"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { GrAddCircle } from "react-icons/gr";
+import axios from 'axios'
+import { url } from "../Api"
 
 
 const images = [foto, foto1, foto2]
@@ -12,6 +14,50 @@ const images = [foto, foto1, foto2]
 const Ak = () => {
   const [img, setImg] = useState(images[0])
   const progrest = (parseInt(1500) / parseInt(2500) * 100)
+  const [articles, setArticles]= useState([])
+  const [postes, setPostes]= useState([])
+  const [open, setOpen]= useState(false)
+  const menuRef = useRef(null)
+
+  useEffect(() => {
+          const handleClickOutside = (event) => {
+              if (menuRef.current && 
+                menuRef.current.id !== "ignore" && 
+                !menuRef.current.contains(event.target)) {
+                  setOpen(false);
+              }
+          };
+          document.addEventListener("mousedown", handleClickOutside);
+          return () => {
+              document.removeEventListener("mousedown", handleClickOutside);
+          };
+      }, []);
+
+useEffect(() => {
+  const Loades = async () => {
+    try{
+      const response = await axios.get(`${url}/Валантеры`);
+      setArticles(response.data)
+    }catch(err){
+      console.error(err);
+    }
+  }
+  Loades()
+}, [])
+
+useEffect(() => {
+  const LoadesPost = async () => {
+    try{
+      const response = await axios.post(`${url}/Валантеры`);
+      setPostes(response.data)
+    }catch(err){
+      
+    }
+  }
+  LoadesPost()
+}, [])
+
+
   return (
     <div className={css.content}>
       <div className={css.patientDetail}>
@@ -58,29 +104,26 @@ const Ak = () => {
           <h3>Валантеры</h3>
           <div className={css.flexx}>
             <div className={css.wrapp}>
-            <div>
-              <img src="https://img.freepik.com/free-photo/portrait-handsome-young-man-closeup_176420-15568.jpg?semt=ais_hybrid" alt="Фото валантера" />
-              <span>ФИО: Абдрахманов Еркин  Аскатович</span>
+              {articles.map((el=>(
+                <div>
+              <img src={el.img} alt="Фото валантера" />
+              <span>ФИО: {el.name} {el.surname}</span>
             </div>
-            <div>
-              <img src="https://img.freepik.com/free-photo/portrait-handsome-young-man-closeup_176420-15568.jpg?semt=ais_hybrid" alt="Фото валантера" />
-              <span>ФИО: Абдрахманов Еркин  Аскатович</span>
-            </div>
-            <div>
-              <img src="https://img.freepik.com/free-photo/portrait-handsome-young-man-closeup_176420-15568.jpg?semt=ais_hybrid" alt="Фото валантера" />
-              <span>ФИО: Абдрахманов Еркин  Аскатович</span>
-            </div>
-            <div>
-              <img src="https://img.freepik.com/free-photo/portrait-handsome-young-man-closeup_176420-15568.jpg?semt=ais_hybrid" alt="Фото валантера" />
-              <span>ФИО: Абдрахманов Еркин  Аскатович</span>
-            </div>
-            <div>
-              <img src="https://img.freepik.com/free-photo/portrait-handsome-young-man-closeup_176420-15568.jpg?semt=ais_hybrid" alt="Фото валантера" />
-              <span>ФИО: Абдрахманов Еркин  Аскатович</span>
-            </div>
+              )))}
           </div>
-          <button className={css.btns}>Добавить <GrAddCircle /></button>
-          <div className={css.pilus}><GrAddCircle /></div>
+          <button id="ignore" onClick={() => setOpen(true)} className={css.btns}>Добавить <GrAddCircle /></button>
+          <div id="ignore" onClick={() => setOpen(!open)} className={css.pilus}><GrAddCircle /></div>
+          {open &&(
+            <form ref={menuRef} className={css.add}>
+              <input type="text"  placeholder="Имя" required/>
+              <input type="text"  placeholder="Фамилия" required/>
+              <div>
+                <input type="file"  placeholder="Фото" required/>
+                <button>Добавть Фотографию</button>
+              </div>
+              <button type="submit">Добавть</button>
+            </form>
+          )}
           </div>
           
         </div>
