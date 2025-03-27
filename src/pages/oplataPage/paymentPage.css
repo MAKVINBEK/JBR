@@ -1,26 +1,67 @@
 .payment-container {
-    max-width: 400px;
     width: 90%;
     margin: 0px auto;
     margin-top: 200px;
+    text-align: center;
+    font-family: Manrope;
+}
+
+.payment-container>div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     padding: 20px;
     background: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    font-family: Manrope;
-    font-size: 13px;
+    width: auto;
 }
 
-h2 {
+.payment-container>div h4{
+    font-size: 18px;
+    font-weight: 500;
     color: #333;
 }
 
-.amount-selection .selected {
-    background: #4c6faf;
-    color: white;
+.payment-container h3{
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 28px;
+    font-weight: 500;
+
 }
 
+.whoHelpOplata-summ{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.whoHelpOplata-summ button{
+    width: 150px;
+    height: 40px;
+    border: 2px solid royalblue;
+    color: royalblue;
+    border-radius: 6px;
+    background: none;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.whoHelpOplata-summ button:hover{
+    color: rgb(255, 255, 255);
+    background-color: royalblue;
+}
+
+.whoHelpOplata-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
 
 .pay-button{
     width: 100px;

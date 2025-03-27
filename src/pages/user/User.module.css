@@ -36,27 +36,6 @@
     margin-top: 15px;
 }
 
-.cards{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.cards a{
-    display: flex;
-    justify-content: center;
-    padding: 10px 15px;
-    text-decoration: none;
-    white-space: nowrap;
-    border-radius: 6px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.cards a img{
-    width: auto;
-    height: 30px;
-}
 
 .patientDetailContainers{
     padding: 25px;
@@ -89,21 +68,13 @@
     width: 100%;
 }
 
-.patientDetailContainers>div>div>span{
+.block1>div>span{
     font-family: manrope;
 }
 
 .name{
     font-size: 22px;
 
-}
-
-.patientDetailContainer>div>img {
-    width: 280px;
-    height: 280px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 3px solid #0077cc;
 }
 
 .patientBlock {

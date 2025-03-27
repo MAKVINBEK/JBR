@@ -94,34 +94,6 @@
     justify-content: space-between;
 }
 
-.patientData5{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.patientData5>p{
-    font-family: Manrope;
-    font-size: 15px;
-}
-
-.patientData5>button{
-    width: 180px;
-    height: 35px;
-    background: transparent;
-    border: 2px solid rgb(1, 213, 1);
-    color: rgb(1, 213, 1);
-    font-family: Manrope;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.patientData5>button:hover{
-    background-color: rgb(1, 213, 1);
-    color: white;
-}
-
 .pddf{
     display: flex;
     flex-direction: column;
@@ -182,31 +154,67 @@
     position: fixed;
 }
 
+.overlay div{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    height: 90%;
+}
+
+.overlay div p{
+    color: white;
+    font-size: 28px;
+    text-align: end;
+}
+
+.overlay div button{
+    position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.473);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 28px;
+        min-width: 70px;
+        height: 70px;
+        cursor: pointer;
+}
+
 .enlargedImage {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 600px;
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
     cursor: pointer;
 }
 
+.imgBlock{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+}
+
 .imgBlock>img {
     width: 100%;
     height: 280px;
-    border-radius: 10px;
+    
     object-fit: cover;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.385);
 }
 
-.imgBlock div{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.imgBlock>div{
+    display: flex;
     margin-top: 10px;
     gap: 10px;
+    transition: 0.5s;
 }
 
 .imgBlock div img{
-    width: 100%;
+    min-width: 110px;
     height: 100px;
     border-radius: 10px;
     object-fit: cover;
@@ -216,6 +224,22 @@
 .imgBlock div img:hover{
     outline: 1.5px solid royalblue;
 }
+
+.imgBlock button{
+        position: absolute;
+        bottom: 0px;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.473);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        min-width: 50px;
+        height: 50px;
+        cursor: pointer;
+}
+.prev { left: 1px; }
+.next { right: 1px; }
 
 @media(max-width:1000px){
     #patientDetail{

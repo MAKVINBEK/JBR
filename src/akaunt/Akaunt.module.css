@@ -16,96 +16,78 @@
     grid-template-columns: 1fr;
     gap: 30px;
 }
-.patientDetailContainer{
-    background: white;
-    width: 100%;
-    padding: 25px;
+
+.form {
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.block1 {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
-    gap: 30px;
-}
+    flex-direction: column;
+    align-items: center;gap: 20px;
+  }
 
-.oplata{
-    text-align: center;
-    font-size: 24px;
-    margin: 10px 0;
-    margin-top: 15px;
-}
+  .form>div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
 
-.btn{
-    height: 40px;
-    max-width: 300px;
-    width: 100%;
-    border: none;
-    background-color:white;
-    border: 2px solid royalblue;
-    color: royalblue;
-    border-radius: 6px;
-    font-size: 16px;
-    margin-top: 20px;
-    transition: .3s;
-    cursor: pointer;
-}
-
-.btn:hover{
-    color: white;
-    background-color: royalblue;
-}
-
-.cards{
+  .form>div>div{
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 10px;
-}
+  }
+  
+  .input {
+    font-size: 16px;
+    padding-left: 10px;
+    width: 100%;
+  }
 
-.cards a{
-    display: flex;
-    justify-content: center;
-    padding: 10px 15px;
-    text-decoration: none;
-    white-space: nowrap;
-    border-radius: 6px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+  .urlBank{
+    border: 1px solid rgb(217, 217, 217);
+    background: rgba(231, 231, 231, 0.271);
+    border-radius: 4px;
+    height: 40px;
+    display: flex;align-items: center;justify-content: center;
+  }
 
-.cards a img{
-    width: auto;
-    height: 30px;
-}
+  .urlBank input{
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+  }
+  
+  .fileInput {
 
-.patientDetailContainers{
-    padding: 25px;
-    padding-top: 10px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+  }
+  
+  .button {
+    background: linear-gradient(45deg, #007bff, #0056b3) !important;
+    font-size: 18px !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    color: white !important;
+    max-width: 300px;
+  }
+  
+  .button:hover {
+    background: linear-gradient(45deg, #0056b3, #003d82) !important;
+  }
 
-.patientDetailContainers>h3{
-    text-align: center;
-    font-size: 24px;
-}
 
 .flexx{
     display:flex;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
-}
-
-.pilus{
-    font-size: 70px;
-    color:#00a300;
-    margin-top: 55px;
-    display: block;
 }
 
 .btns{
     height: 40px;
-    max-width: 300px;
-    width: 100%;
+    width: 200px;
     border: none;
     background-color:white;
     border: 2px solid #00a300;
@@ -115,7 +97,10 @@
     margin-top: 20px;
     transition: .3s;
     cursor: pointer;
-    display: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
 }
 
 .btns:hover{
@@ -124,17 +109,25 @@
 }
 
 .add{
-    padding: 50px;
+    width: 250px;
+    padding: 20px 15px;
     background-color: rgb(233, 233, 233);
     box-shadow:3px 3px 10px rgba(0, 0, 0, 0.145) ;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    position: absolute;
+    position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    top: 60%;
+    top: 40%;
+    z-index: 2;
+}
+
+.add span{
+    text-align: end;
+    font-size: 26px;
+    margin: -10px 0;
 }
 
 .add>input{
@@ -164,34 +157,55 @@
     height: 50px;
     border: none;
     border-radius: 6px;
+    font-size: 17px;
     background-color: #f1f9ff;
 }
 
+.add>button{
+    width: 100%;
+    height: 40px;
+    border: none;
+    background-color: royalblue;
+    color: white;
+    font-size: 15px;
+    border-radius: 6px;
+}
+
 .wrapp {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 15px;
     margin-top: 10px;
+    width: 100%;
 }
 
 .wrapp>div{
-    max-width: 200px;
+    width: 100%;
     background-color: white;
-    padding: 10px;
-    border-radius: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.17);
 }
 
 .wrapp>div>img{
     width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.099);
 }
 
-.wrapp>div>span{
+.wrapp>div>p{
     font-family: manrope;
+    margin: 5px;
+    color: rgb(60, 59, 59);
 }
 
-.name{
-    font-size: 22px;
+.wrapp>div>p>span{
+    color: black;
+    font-size: 18px;
 }
 
 .wrapp>img {
@@ -202,108 +216,17 @@
     border: 3px solid #0077cc;
 }
 
-.patientBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    flex: 1;
-}
-
-.patientBlock4{
-    display: flex;justify-content: space-between;
-    font-family: Manrope;
-}
-
-.patientBlock1,
-.patientBlock2,
-.patientBlock4,
-.blo44 {
-    background: #f1f9ff;
-    padding: 12px;
-    border-radius: 8px;
-}
-progress {
-    width: 100%;
-    height: 12px;
-    border-radius: 6px;
-    appearance: none;
-    overflow: hidden;
-}
-
-progress::-webkit-progress-bar {
-    background: #e0e0e0;
-    border-radius: 6px;
-}
-
-progress::-webkit-progress-value {
-    background: linear-gradient(to right, #00c3ff, #0077ff);
-    border-radius: 6px;
-}
-
-.pdf-section {
-    margin-bottom: 20px;
-}
-
-.pdf-container {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-}
-
-.pdf-container embed {
-    border: 2px solid #007bff;
-    border-radius: 5px;
-}
-
-@media (max-width: 1000px){
-}
-
 @media (max-width: 768px) {
-    .block1 {
-        flex-direction: column;
-        align-items: center;
-    }
 
-    .patientDetailContainer img {
-        width: 100%;
+    .wrapp{
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
-@media(max-width:480px){
-
-    .flexx{
-        flex-direction:column-reverse;
-    }
-
-    .pilus{
-        display: none;
-    }
-
-    .btns{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-    }
+@media(max-width:550px){
 
     .wrapp{
         display: grid;
         grid-template-columns: 1fr 1fr;
-    }
-
-    .patientDetailContainers>div>div{
-        width: 100%;
-    }
-
-    .patientDetailContainers>div>div>span{
-        font-size: 14px;
-    }
-
-    .btns{
-        align-self: center;
-    }
-
-    .cards a{
-        font-size: 14px;
     }
 }

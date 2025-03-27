@@ -1,28 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './homePage3.css'
-import manPhoto from '../../../img/man.png'
+import { get, } from "../../../Api";
 
 export default function HomePage3() {
+    const [articles, setArticles] =useState([])
+
+    useEffect(() => {
+        const loadArticles = async () => {
+          try {
+            const response = await get.getFaunder()
+            setArticles(response.data);
+          } catch (err) {
+            console.error(err);
+          }
+        };
+        loadArticles();
+      }, []);
+
     return (
         <div id="homepage3">
             <div className="homepage3Container">
                 <h2>Oснователи фонда</h2>
                 <div className="homePage3Blocks">
-                    <div>
-                        <img src={manPhoto} alt="" />
-                            <h4>Эркин Эркинов</h4>
-                            <p>Помогать наиболее уязвимым слоям населения</p>
-                    </div>
-                    <div>
-                        <img src={manPhoto} alt="" />
-                            <h4>Эркин Эркинов</h4>
-                            <p>Помогать наиболее уязвимым слоям населения</p>
-                    </div>
-                    <div>
-                        <img src={manPhoto} alt="" />
-                            <h4>Эркин Эркинов</h4>
-                            <p>Помогать наиболее уязвимым слоям населения</p>
-                    </div>
+                    
+                    
                 </div>
                 <p>Подберите страховой продукт, который наилучшим образом
                     подойдёт именно вам</p>

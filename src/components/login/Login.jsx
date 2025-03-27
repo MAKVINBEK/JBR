@@ -1,61 +1,129 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { post } from '../../Api';
 import css from "./Login.module.css";
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
-import InputAdornment from "@mui/material/InputAdornment";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
+function Login() {
+    const [showPass, setShowPass] = useState(false);
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
+    const [alert, setAlert] = useState({ show: false, message: "", type: "" });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
-  return (
-    <div className={css.margin}>
-      <form className={css.contentLogin}>
-        <h2>Авторизация</h2>
-        <h3>Введите ваш логин и пароль</h3>
+    const showAlert = (message, type) => {
+        setAlert({ show: true, message, type });
+        setTimeout(() => setAlert({ show: false, message: "", type: "" }), 3000);
+    };
 
-        <TextField
-          className={css.int}
-          type="email"
-          label="Email"
-          placeholder="Введите ваш email"
-          fullWidth
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": { borderColor: "royalblue" },
-              "&:hover fieldset": { borderColor: "blue" },
-            },
-          }}
-        />
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+      
+        if (!password) {
+          showAlert("Введите пароль!", "error");
+          return;
+        }
+      
+        try {
+          setLoading(true);
+          setError(null);
+      
+          const data = await post.sendLogin({
+            username: login,
+            password: password,
+          });
+      
+          console.log("Login response:", data);
+      
+          if (data.access) {
+            localStorage.setItem("token", data.access);
+            localStorage.setItem("refresh", data.refresh);
+            showAlert("Вход выполнен успешно!", "success");
+      
+            setTimeout(() => {
+              navigate("/dashboard");
+            }, 1000);
+          } else {
+            const errorMessage = data.detail || "Неверный логин или пароль!";
+  showAlert(errorMessage, "error");
+  console.error("Ошибка авторизации:", data);
+          }
+        } catch (err) {
+          console.error("Login failed:", err);
+          showAlert("Неверный логин или пароль!", "error");
+          setError(err);
+        } finally {
+          setLoading(false);
+        }
+      };
+      
 
-        <TextField
-          className={css.int}
-          type={showPassword ? "text" : "password"}
-          label="Пароль"
-          placeholder="Введите ваш пароль"
-          fullWidth
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": { borderColor: "royalblue" },
-              "&:hover fieldset": { borderColor: "blue" },
-            },
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
+    return (
+        <div className={css.margin}>
+            <form className={css.contentLogin} onSubmit={handleSubmit}>
+                <TextField
+                    className={css.int}
+                    type="text"
+                    label="Логин"
+                    placeholder="Введите ваш Логин"
+                    value={login}
+                    onChange={(e) => setLogin(e.target.value)}
+                    disabled={loading}
+                    fullWidth
+                    sx={{
+                        "& .MuiOutlinedInput-root": {
+                            "& fieldset": { borderColor: "royalblue" },
+                            "&:hover fieldset": { borderColor: "blue" },
+                        },
+                    }}
+                />
+                <TextField
+                    className={css.int}
+                    type={showPass ? "text" : "password"}
+                    label="Пароль"
+                    placeholder="Введите ваш пароль"
+                    onChange={(e) => setPassword(e.target.value)}
+                    disabled={loading}
+                    fullWidth
+                    sx={{
+                        "& .MuiOutlinedInput-root": {
+                            "& fieldset": { borderColor: "royalblue" },
+                            "&:hover fieldset": { borderColor: "blue" },
+                        },
+                    }}
+                    InputProps={{
+                        endAdornment: (
+                            <IconButton onClick={() => setShowPass(!showPass)} edge="end">
+                                {showPass ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                        ),
+                    }}
+                />
+                <button
+                  className={css.button}
+                    type="submit"
+                    disabled={loading}>
+                    {loading ? "Загрузка..." : "Войти"}
+                </button>
+            </form>
 
-        <button type="submit" className={css.button}>Войти</button>
-      </form>
-    </div>
-  );
-};
+            {alert.show && (
+                <div className={`alert alert-${alert.type}`}>
+                    {alert.message}
+                </div>
+            )}
+
+            {error && (
+                <div className="error">
+                    {error || "Произошла ошибка"}
+                </div>
+            )}
+        </div>
+    );
+}
 
 export default Login;

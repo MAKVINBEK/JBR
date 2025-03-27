@@ -17,18 +17,19 @@ import { ToastContainer, toast } from "react-toastify";
 import WhoHelpOplata from './pages/whoHelp/whoHelpOplata/whoHelpOplata';
 import ScrollToTop from './ScrollTop';
 import QRCodeScanner from './UrlQr';
-import Login from './components/login/Login';
 import Ak from './akaunt/Akaunt';
+import Login from './components/login/Login';
+import PrivateRoute from './components/login/PrivateRoute';
 
 function App() {
 
   const location = useLocation();
-  const hideHeaderRoutes = ["/qrCodePage", "/login", "/registr", "/akaunt"];
+  const hideHeaderRoutes = ["/qrCodePage", "/login", "/registr", "/dashboard",];
   return (
     <div className="App">
       {!hideHeaderRoutes.includes(location.pathname) && <Header />}
        <ScrollToTop/>
-<ToastContainer position="top-right" autoClose={3000} />
+<ToastContainer position="top-right" autoClose={2000} />
       <Routes>
         <Route path='/' element={<HomePages />} />
         <Route path='/whoToHelp' element={<WhoHelp />} />
@@ -44,7 +45,12 @@ function App() {
         <Route path='/whoHelpOplata/:name' element={<WhoHelpOplata/>}/>
         <Route path='/url' element={<QRCodeScanner/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/akaunt' element={<Ak/>}/>
+        <Route
+          path="/dashboard" element={
+            <PrivateRoute>
+              <Ak />
+            </PrivateRoute>
+          }/>
       </Routes>
       {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
     </div>

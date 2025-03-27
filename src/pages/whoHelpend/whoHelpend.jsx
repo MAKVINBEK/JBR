@@ -8,8 +8,10 @@ import helpenBaby6 from '../whoHelpend/whoHelpendImg/helpendBaby6.png'
 import helpenBaby7 from '../whoHelpend/whoHelpendImg/helpendBaby7.png'
 import helpenBaby8 from '../whoHelpend/whoHelpendImg/helpendBaby8.png'
 import WhoHelpendBlock from './whoHelpendBlock'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TbZoom } from "react-icons/tb";
+import axios from 'axios'
+import { get, url } from '../../Api'
 
 
 
@@ -84,10 +86,29 @@ export default function WhoHelpend () {
     ]
 
     const [value,setValue]= useState("")
-    
-        const filteredCountries = HelpendDan.filter(country =>{
-            return country.name.toLowerCase().includes(value.toLowerCase())
-        })
+    const [articles, setArticles] =useState([])
+
+    useEffect(() => {
+        const loadArticles = async () => {
+          try {
+            const data = await get.Helped_Needy();
+            console.log("Ответ от API:", data);
+        if (Array.isArray(data)) {
+          setArticles(data);
+        } else {
+          console.error("Не массив! Ответ:", data);
+          setArticles([]);
+        }
+          } catch (err) {
+            console.error(err);
+          }
+        };
+        loadArticles();
+      }, []);
+
+    const filteredCountries = articles.filter(country =>{
+        return country.name.toLowerCase().includes(value.toLowerCase())
+    })
 
     return(
         <div id='whoHelpend'>

@@ -32,14 +32,13 @@ export default function WhoHelpendPatient() {
             </div>
           </div>
                 <div className="patientInfo">
-                    <p className="patientName">{patient.name}</p>
-                    <p className="diagnosis"><strong>Диагноз:</strong> {patient.diagnoz}</p>
+                    <p className="patientName">{patient.name} {patient.surname}</p>
+                    <p className="patientName">{patient.age} лет</p>
+                    <p className="diagnosis"><strong>Диагноз:</strong> {patient.diagnosis}</p>
                     <p className="treatment">
-                        <strong>Лечение:</strong> {patient.lechenia}
+                        <strong>Лечение:</strong> {patient.treatment}
                     </p>
-                    <div className='closed-text tt'>
-                        {patient.sbor}
-                    </div>
+                    <div className='closed-text tt'>СБОР ЗАКРЫТ </div>
                     <button className="backButton" onClick={() => navigate(-1)}>Назад</button>
                 </div>
         </div>

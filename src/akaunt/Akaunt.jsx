@@ -1,135 +1,265 @@
-import css from "./Akaunt.module.css"
-import bakay from "../img/bakay.png"
-import foto from "../img/helpBaby7.png"
-import foto1 from "../img/helpBaby5.png"
-import foto2 from "../img/helpBaby6.png"
-import { useEffect, useRef, useState } from "react"
+import css from "./Akaunt.module.css";
+import { useEffect, useRef, useState } from "react";
 import { GrAddCircle } from "react-icons/gr";
-import axios from 'axios'
-import { url } from "../Api"
-
-
-const images = [foto, foto1, foto2]
+import { IoClose } from "react-icons/io5";
+import { TextField, Button } from "@mui/material";
+import { get, post } from "../Api"; 
+import { toast } from "react-toastify";
+import QrScanner from 'qr-scanner';
+import mbank from "../img/mbank.webp";
+import obank from "../img/obank.webp";
+import optima from "../img/optimabank.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Ak = () => {
-  const [img, setImg] = useState(images[0])
-  const progrest = (parseInt(1500) / parseInt(2500) * 100)
-  const [articles, setArticles]= useState([])
-  const [postes, setPostes]= useState([])
-  const [open, setOpen]= useState(false)
-  const menuRef = useRef(null)
+  const [articles, setArticles] = useState([]);
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef(null);
+  const [data, setData] = useState({ name: "", surname: "", img: null });
+  const navigate = useNavigate();
+
+  // Проверка токена при загрузке
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+  const [dataCabinet, setDataCabinet] = useState({
+    diagnosis: "",
+    treatment: "",
+    photo: null,
+    sum: "",
+    collected: "",
+    age:"",
+    phone_number:"",
+  });
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      try {
+        const qrResult = await QrScanner.scanImage(file);
+        setResult(qrResult);
+        setError(null);
+      } catch (err) {
+        setError('Не удалось распознать QR-код');
+        setResult(null);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, type, files, value } = e.target;
+    setData((prev) => ({
+      ...prev,
+      [name]: type === "file" ? files[0] : value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("surname", data.surname);
+    formData.append("img", data.img);
+
+    try {
+      const res = await post.sendVolunteer(formData); 
+      toast.success("Успешно: " + res.message);
+      setData({ name: "", surname: "", img: null });
+      setOpen(false);
+      const response = await get.getVolunteer();
+      setArticles(Array.isArray(response) ? response : []);
+    } catch (err) {
+      toast.error("Ошибка: " + err.response?.data?.message || "Что-то пошло не так");
+    }
+  };
+
+  useEffect(() => {                                                                                                                                          
+    const loadArticles = async () => {
+      try {
+        setLoading(true);
+        const response = await get.getVolunteer
+        ();
+        setArticles(Array.isArray(response) ? response : []);
+      } catch (err) {
+        setError("Не удалось загрузить волонтеров: " + err.message);
+        console.error("Fetch error:", err);
+        setArticles([]); 
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadArticles();
+  }, []);
 
   useEffect(() => {
-          const handleClickOutside = (event) => {
-              if (menuRef.current && 
-                menuRef.current.id !== "ignore" && 
-                !menuRef.current.contains(event.target)) {
-                  setOpen(false);
-              }
-          };
-          document.addEventListener("mousedown", handleClickOutside);
-          return () => {
-              document.removeEventListener("mousedown", handleClickOutside);
-          };
-      }, []);
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
-useEffect(() => {
-  const Loades = async () => {
-    try{
-      const response = await axios.get(`${url}/Валантеры`);
-      setArticles(response.data)
-    }catch(err){
-      console.error(err);
+  const handleChangeProfile = (e) => {
+    const { name, type, files, value } = e.target;
+    setDataCabinet((prev) => ({
+      ...prev,
+      [name]: type === "file" ? files[0] : value,
+    }));
+  };
+
+  const handleSubmitProfile = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("diagnosis", dataCabinet.diagnosis);
+    formData.append("treatment", dataCabinet.treatment);
+    formData.append("sum", dataCabinet.sum);
+    formData.append("collected", dataCabinet.collected);
+    formData.append("photo", dataCabinet.photo);
+    formData.append("age", dataCabinet.age);
+    formData.append("phone_number", dataCabinet.phone_number);
+
+    try {
+      const res = await post.sendProfile(formData); 
+      toast.success("Успешно: " + res.message);
+      setDataCabinet({ diagnosis: "", treatment: "",phone_number:"",age:"", sum: "", collected: "", photo: null });
+    } catch (err) {
+      toast.error("Ошибка: " + err.response?.data?.message || "Что-то пошло не так");
     }
-  }
-  Loades()
-}, [])
-
-useEffect(() => {
-  const LoadesPost = async () => {
-    try{
-      const response = await axios.post(`${url}/Валантеры`);
-      setPostes(response.data)
-    }catch(err){
-      
-    }
-  }
-  LoadesPost()
-}, [])
-
+  };
 
   return (
     <div className={css.content}>
       <div className={css.patientDetail}>
-        <div className={css.patientDetailContainer}>
-          <div className={css.block1}>
-          <div className="imgBlock">
-            <img src={img} alt="Фото пациента" />
-            <div>
-              {images.map((el, index) => (
-                <img key={index} src={el} onClick={() => setImg(el)} />
-              ))}
-            </div>
+        <form onSubmit={handleSubmitProfile} className={css.form}>
+          <div>
+                     <div>
+          <TextField
+            label="Сумма"
+            type="number"
+            name="sum"
+            value={dataCabinet.sum}
+            onChange={handleChangeProfile}
+            fullWidth
+            className={css.input}
+          />
+          <TextField
+            label="Собрано"
+            type="number"
+            name="collected"
+            value={dataCabinet.collected}
+            onChange={handleChangeProfile}
+            fullWidth
+            className={css.input}
+          />
+         </div>
+          <div>
+            <div className="whoHelpOplata-buttons">
+            <img className="pay-button" src={mbank} alt="Mbank" />
+            <img className="pay-button" src={obank} alt="Obank" />
+            <img className="pay-button" src={optima} alt="Optima" />
           </div>
-            <div className={css.patientBlock}>
-              <h3 className={css.name}>Быкова Есения</h3>
-              <div className={css.patientBlock1}>
-                <span>Диагноз:</span>
-                <h4>Врожденный порок развития верхней и нижней правой конечностей.</h4>
-              </div>
-              <div className={css.patientBlock2}>
-                <h4>Требуется лечение:</h4>
-                <h4>Курс реабилитации в ООО «Развитие без барьеров» г.Санкт-Петербург</h4>
-              </div>
-              <div className={css.blo44}>
-              <progress value={progrest} max="100"></progress>
-              <div className={css.patientBlock4}>
-                <h4>СОБРАНО <br /> 1500 сом</h4>
-                <h4>НУЖНО <br />2500 сом </h4>
-              </div>
-              </div>
-              <button className={css.btn}>Добавить сумму</button>
-            </div>
+          <div className={css.urlBank}>
+            <input type="file" accept="image/*" onChange={handleFileChange} />
+            {loading && <p>Загрузка...</p>}
+            {result && <p>{result}</p>}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {!result && !error && !loading && <p>Выберите изображение с QR-кодом</p>}
           </div>
-          <p className={css.oplata}>Ваши реквезиты</p>
-          <div className={css.cards}>
-            <a href="https://app.mbank.kg/qr/#00020101021132440012c2c.mbank.kg01020210129967734545081302125204999953034175911MUNARBEK%20K.630470b2" >
-              <img src="https://mbank.kg/media/logo/mbank_logo_full_E3tUOOl.png" alt="" /></a>
-            <a> <img src={bakay} alt="" /></a>
-            <a > <img src="https://www.deposit.kg/wp-content/uploads/2025/01/logo_obank_dark-1.png" alt="" /></a>
-            <a  ><img src="https://export.gov.kg/assets/bashkaruu/img/providers/bakay_bank_67.png" alt="" /></a>
-          </div>
-        </div>
-        <div className={css.patientDetailContainers}>
-          <h3>Валантеры</h3>
-          <div className={css.flexx}>
-            <div className={css.wrapp}>
-              {articles.map((el=>(
-                <div>
-              <img src={el.img} alt="Фото валантера" />
-              <span>ФИО: {el.name} {el.surname}</span>
-            </div>
-              )))}
-          </div>
-          <button id="ignore" onClick={() => setOpen(true)} className={css.btns}>Добавить <GrAddCircle /></button>
-          <div id="ignore" onClick={() => setOpen(!open)} className={css.pilus}><GrAddCircle /></div>
-          {open &&(
-            <form ref={menuRef} className={css.add}>
-              <input type="text"  placeholder="Имя" required/>
-              <input type="text"  placeholder="Фамилия" required/>
-              <div>
-                <input type="file"  placeholder="Фото" required/>
-                <button>Добавть Фотографию</button>
-              </div>
-              <button type="submit">Добавть</button>
-            </form>
-          )}
           </div>
           
+          <input
+            type="file"
+            name="photo"
+            onChange={handleChangeProfile}
+            required
+            className={css.fileInput}
+          />
+          </div>
+          
+
+          <Button type="submit" variant="contained" fullWidth className={css.button}>
+            Отправить
+          </Button>
+        </form>
+
+        <div className={css.patientDetailContainers}>
+          <h3>Волонтеры</h3>
+          <div className={css.flexx}>
+            <div ref={menuRef}>
+              <button onClick={() => setOpen(true)} className={css.btns}>
+                Добавить <GrAddCircle />
+              </button>
+              {open && (
+                <form onSubmit={handleSubmit} className={css.add}>
+                  <span onClick={() => setOpen(false)}><IoClose /></span>
+                  <input
+                    type="text"
+                    placeholder="Имя"
+                    name="name"
+                    value={data.name}
+                    onChange={handleChange}
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Фамилия"
+                    name="surname"
+                    value={data.surname}
+                    onChange={handleChange}
+                    required
+                  />
+                  <div>
+                    <input
+                      type="file"
+                      name="img"
+                      onChange={handleChange}
+                      required
+                    />
+                    <button type="button">Добавить фотографию</button>
+                  </div>
+                  <button type="submit">Добавить</button>
+                </form>
+              )}
+            </div>
+            <div className={css.wrapp}>
+              {loading ? (
+                <p>Загрузка волонтеров...</p>
+              ) : error ? (
+                <p style={{ color: 'red' }}>{error}</p>
+              ) : articles.length === 0 ? (
+                <p>Нет волонтеров</p>
+              ) : (
+                articles.map((el) => (
+                  <div key={el.id}>
+                    <img src={el.img} alt="Фото волонтера" />
+                    <p>
+                      <span>ФИО:</span><br /> {el.name} {el.surname}
+                    </p>
+                  </div>
+                ))
+              )}
+            </div>
+            <button onClick={handleLogout}>выйти</button>
+          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Ak
+export default Ak;
