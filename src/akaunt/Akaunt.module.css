@@ -18,8 +18,10 @@
 }
 
 .form {
+    max-width: 500px;
+    width: 100%;
     margin: 20px auto;
-    padding: 20px;
+    padding: 20px 30px;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -29,41 +31,9 @@
   }
 
   .form>div{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-  }
-
-  .form>div>div{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .input {
-    font-size: 16px;
-    padding-left: 10px;
     width: 100%;
   }
 
-  .urlBank{
-    border: 1px solid rgb(217, 217, 217);
-    background: rgba(231, 231, 231, 0.271);
-    border-radius: 4px;
-    height: 40px;
-    display: flex;align-items: center;justify-content: center;
-  }
-
-  .urlBank input{
-    position: absolute;
-    opacity: 0;
-    z-index: 1;
-  }
-  
-  .fileInput {
-
-  }
-  
   .button {
     background: linear-gradient(45deg, #007bff, #0056b3) !important;
     font-size: 18px !important;
@@ -83,6 +53,12 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+}
+
+.valanter{
+    font-size: 32px;
+    font-weight: 400;
+    color: royalblue;
 }
 
 .btns{
@@ -214,6 +190,20 @@
     border-radius: 10px;
     object-fit: cover;
     border: 3px solid #0077cc;
+}
+
+.exit{
+    width: 130px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    background-color: royalblue;
+    font-size: 18px;
+    margin-left: auto;
+    margin-top: 30px;
+    margin-bottom: -30px;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {

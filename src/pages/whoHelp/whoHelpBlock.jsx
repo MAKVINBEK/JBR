@@ -28,6 +28,9 @@ export default function WhoHelpBlock({ dann }) {
           <div className="whoHelpBlock2">
             <h4>{dann.collected} сом <br />собрано</h4>
             <div>{dann.sum} сом <br /> <span>нужно</span></div>
+            {dann.volunteers.map((el,index)=>(
+              <p key={index}>{el}</p>
+            ))}
           </div>
 
           <button

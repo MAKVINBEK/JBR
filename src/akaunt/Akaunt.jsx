@@ -147,16 +147,6 @@ const Ak = () => {
       <div className={css.patientDetail}>
         <form onSubmit={handleSubmitProfile} className={css.form}>
           <div>
-                     <div>
-          <TextField
-            label="Сумма"
-            type="number"
-            name="sum"
-            value={dataCabinet.sum}
-            onChange={handleChangeProfile}
-            fullWidth
-            className={css.input}
-          />
           <TextField
             label="Собрано"
             type="number"
@@ -165,32 +155,14 @@ const Ak = () => {
             onChange={handleChangeProfile}
             fullWidth
             className={css.input}
-          />
-         </div>
-          <div>
-            <div className="whoHelpOplata-buttons">
-            <img className="pay-button" src={mbank} alt="Mbank" />
-            <img className="pay-button" src={obank} alt="Obank" />
-            <img className="pay-button" src={optima} alt="Optima" />
-          </div>
-          <div className={css.urlBank}>
-            <input type="file" accept="image/*" onChange={handleFileChange} />
-            {loading && <p>Загрузка...</p>}
-            {result && <p>{result}</p>}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            {!result && !error && !loading && <p>Выберите изображение с QR-кодом</p>}
-          </div>
-          </div>
-          
-          <input
-            type="file"
-            name="photo"
-            onChange={handleChangeProfile}
-            required
-            className={css.fileInput}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                  "& fieldset": { borderColor: "royalblue" },
+                  "&:hover fieldset": { borderColor: "blue" },
+              },
+          }}
           />
           </div>
-          
 
           <Button type="submit" variant="contained" fullWidth className={css.button}>
             Отправить
@@ -198,7 +170,7 @@ const Ak = () => {
         </form>
 
         <div className={css.patientDetailContainers}>
-          <h3>Волонтеры</h3>
+          <h3 className={css.valanter}>Волонтеры</h3>
           <div className={css.flexx}>
             <div ref={menuRef}>
               <button onClick={() => setOpen(true)} className={css.btns}>
@@ -254,9 +226,10 @@ const Ak = () => {
                 ))
               )}
             </div>
-            <button onClick={handleLogout}>выйти</button>
+            
           </div>
         </div>
+        <button className={css.exit} onClick={handleLogout}>выйти</button>
       </div>
     </div>
   );
