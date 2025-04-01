@@ -1,2 +1,19 @@
+.whoHelpOplataContainer{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.335);
+    padding: 50px;
+    border-radius: 8px;
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 200px;
+    height: 100%;
+}
 
+.whoHelpOplataContainer h3{
+    font-size: 24px;
+    font-weight: 500;
+    color: rgb(40, 40, 40);
+    text-shadow: 4px 4px 8px rgba(12, 12, 12, 0.24);
+    text-align: center;
+}
   

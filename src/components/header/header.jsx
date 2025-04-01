@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import './header.css'
 import logo from '../../img/logo6.png'
 import { Turn as Hamburger } from 'hamburger-react'
-import { FaHandHoldingHeart } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 export default function Header() {
     const [isActive, setIsActive] = useState(false)
     const menuRef = useRef(null)
     const [open, setOpen] = useState(false)
+    const location = useLocation();
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -43,18 +43,17 @@ export default function Header() {
                         <h4>Служба поддержки</h4>
                         <a href="tel:+996 999 999 999">+996 999 999 999</a>
                     </div>
-                    {open && (
+                    {open && location.pathname !== '/login' && (
                         <div className="overlays">
                             <div className="cardKab">
-                                <p>Вход предназначен только <br /> для нуждающихся!</p>
+                                <p>Только нуждающиеся могут войти!</p>
                                 <div>
                                     <button className="btn" onClick={() => setOpen(false)}>Назад</button>
-                                    <NavLink to="/login" className="btn">Продолжить</NavLink>
+                                    <NavLink to="/dashboard" className="btn">Продолжить</NavLink>
                                 </div>
                             </div>
                         </div>
                     )}
-                    <NavLink className="NavLinkHel none" to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15} /></NavLink>
                     <button onClick={() => setOpen(true)} className="lKab none">Войти</button>
                     <div className="burger" onClick={() => setIsActive(!isActive)}>
                         <Hamburger toggled={isActive} toggle={setIsActive} />
@@ -71,8 +70,7 @@ export default function Header() {
                         <NavLink onClick={() => setIsActive(false)} className={"NavLink"} to="/contact">Контакты</NavLink>
                     </div>
                     <div className="bLKab">
-                    <NavLink onClick={() => setIsActive(false)} className="NavLinkHel" to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15} /></NavLink>
-                        <button onClick={() => setOpen(true)} className="lKab">Войти</button>
+                        <button onClick={() => { setOpen(true); setIsActive(false); }} className="lKab">Войти</button>
                     </div>
                 </div>
             </div>

@@ -24,7 +24,7 @@ import PrivateRoute from './components/login/PrivateRoute';
 function App() {
 
   const location = useLocation();
-  const hideHeaderRoutes = ["/qrCodePage", "/login", "/registr", "/dashboard",];
+  const hideHeaderRoutes = ["/qrCodePage", "/registr", "/dashboard",];
   return (
     <div className="App">
       {!hideHeaderRoutes.includes(location.pathname) && <Header />}
@@ -42,7 +42,7 @@ function App() {
         <Route path='/oplataPage' element={<PaymentPage/>}/>
         <Route path='/qrCodePage' element={<User/>}/> 
         <Route path='/qr' element={<QRGenerator/>}/>
-        <Route path='/whoHelpOplata/:name' element={<WhoHelpOplata/>}/>
+        <Route path='/whoHelpOplata/:id' element={<WhoHelpOplata/>}/>
         <Route path='/url' element={<QRCodeScanner/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route

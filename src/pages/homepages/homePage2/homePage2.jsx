@@ -1,6 +1,8 @@
 import React from "react";
-import dogovor from '../../../img/menlike.jpg'
+import dogovor from '../../../img/live.png'
 import './homePage2.css'
+import { NavLink } from "react-router-dom";
+import { FaHandHoldingHeart } from "react-icons/fa";
 
 
 export default function HomePage2 () {
@@ -8,20 +10,14 @@ export default function HomePage2 () {
             <div className="homePage2Conteiner">
                 <div className="homepage2Block1">
                     <h2>
-                        Будьте уверенными
-                            в завтрашнем дне
+                    Подари надежду — измени будущее
                     </h2>
                     <p>
-                    Главной целью благотворительного фонда является  
-                    создание таких условий, при которых у каждого 
-                     нуждающегося имеется возможность получить  
-                      помощь, а у каждого благотворителя – возможность ее оказать.
+                    Твоя помощь может изменить чью-то жизнь. Дари надежду сегодня – это первый шаг к светлому будущему.
                     </p>
-                    <button>Подробнее</button>
+                    <NavLink className="NavLinkHel" to="/oplataPage">Хочу помочь<FaHandHoldingHeart size={15} /></NavLink>
                 </div>
-                <div className="homepage2Block2">
-                    <img className="img"src={dogovor} alt="" />
-                </div>
+                    <img className="homepage2Block2" src={dogovor} alt="" />
             </div>
     )
 }

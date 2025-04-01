@@ -6,12 +6,6 @@ import obank from "../../img/obank.webp"
 import optima from "../../img/optimabank.jpg"
 
 export default function PaymentPage() {
-
-    const data = [
-        {
-
-        }
-    ]
     
     return (
         <div className="payment-container">

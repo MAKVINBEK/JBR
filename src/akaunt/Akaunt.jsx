@@ -3,12 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { GrAddCircle } from "react-icons/gr";
 import { IoClose } from "react-icons/io5";
 import { TextField, Button } from "@mui/material";
-import { get, post } from "../Api"; 
+import { get, post } from "../Api";
 import { toast } from "react-toastify";
-import QrScanner from 'qr-scanner';
-import mbank from "../img/mbank.webp";
-import obank from "../img/obank.webp";
-import optima from "../img/optimabank.jpg";
 import { useNavigate } from "react-router-dom";
 
 const Ak = () => {
@@ -18,7 +14,6 @@ const Ak = () => {
   const [data, setData] = useState({ name: "", surname: "", img: null });
   const navigate = useNavigate();
 
-  // Проверка токена при загрузке
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -28,81 +23,69 @@ const Ak = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/');
   };
+
   const [dataCabinet, setDataCabinet] = useState({
-    diagnosis: "",
-    treatment: "",
-    photo: null,
-    sum: "",
     collected: "",
-    age:"",
-    phone_number:"",
   });
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  const handleFileChange = async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      try {
-        const qrResult = await QrScanner.scanImage(file);
-        setResult(qrResult);
-        setError(null);
-      } catch (err) {
-        setError('Не удалось распознать QR-код');
-        setResult(null);
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
-
+ 
   const handleChange = (e) => {
-    const { name, type, files, value } = e.target;
+    const { name, value } = e.target;
     setData((prev) => ({
       ...prev,
-      [name]: type === "file" ? files[0] : value,
+      [name]: value,
     }));
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!data.name || !data.surname) {
+      toast.error("Пожалуйста, заполните все обязательные поля");
+      return;
+    }
+  
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("surname", data.surname);
-    formData.append("img", data.img);
-
+    if (data.img) {
+      formData.append("img", data.img);
+    } else {
+      toast.error("Пожалуйста, добавьте фотографию");
+      return;
+    }
+  
     try {
-      const res = await post.sendVolunteer(formData); 
+      const res = await post.sendVolunteer(formData);
+      if (!res || !res.message) {
+        throw new Error("Некорректный ответ от сервера");
+      }
+  
       toast.success("Успешно: " + res.message);
       setData({ name: "", surname: "", img: null });
       setOpen(false);
+  
       const response = await get.getVolunteer();
-      setArticles(Array.isArray(response) ? response : []);
+      setArticles(response);
+      console.log(response);
     } catch (err) {
-      toast.error("Ошибка: " + err.response?.data?.message || "Что-то пошло не так");
+      console.error("Ошибка при отправке формы:", err);
+      toast.error("Ошибка: " + (err.response?.data?.message || err.message || "Что-то пошло не так"));
     }
   };
-
-  useEffect(() => {                                                                                                                                          
-    const loadArticles = async () => {
-      try {
-        setLoading(true);
-        const response = await get.getVolunteer
-        ();
-        setArticles(Array.isArray(response) ? response : []);
-      } catch (err) {
-        setError("Не удалось загрузить волонтеров: " + err.message);
-        console.error("Fetch error:", err);
-        setArticles([]); 
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadArticles();
-  }, []);
+  
+  useEffect(() => {
+                const loadArticles = async () => {
+                  try {
+                    const response = await get.getProfile()
+                    setArticles(response);
+                  } catch (err) {
+                    console.error("rr",err);
+                  }
+                };
+                loadArticles();
+              }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -115,28 +98,22 @@ const Ak = () => {
   }, []);
 
   const handleChangeProfile = (e) => {
-    const { name, type, files, value } = e.target;
-    setDataCabinet((prev) => ({
-      ...prev,
-      [name]: type === "file" ? files[0] : value,
+    const { name, value } = e.target;
+    setDataCabinet(prev => ({
+        ...prev,
+        [name]: value
     }));
-  };
+};
 
   const handleSubmitProfile = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("diagnosis", dataCabinet.diagnosis);
-    formData.append("treatment", dataCabinet.treatment);
-    formData.append("sum", dataCabinet.sum);
     formData.append("collected", dataCabinet.collected);
-    formData.append("photo", dataCabinet.photo);
-    formData.append("age", dataCabinet.age);
-    formData.append("phone_number", dataCabinet.phone_number);
-
+     
     try {
-      const res = await post.sendProfile(formData); 
+      const res = await post.sendProfile(formData);
       toast.success("Успешно: " + res.message);
-      setDataCabinet({ diagnosis: "", treatment: "",phone_number:"",age:"", sum: "", collected: "", photo: null });
+      setDataCabinet({ collected: "",});
     } catch (err) {
       toast.error("Ошибка: " + err.response?.data?.message || "Что-то пошло не так");
     }
@@ -147,21 +124,20 @@ const Ak = () => {
       <div className={css.patientDetail}>
         <form onSubmit={handleSubmitProfile} className={css.form}>
           <div>
-          <TextField
-            label="Собрано"
-            type="number"
-            name="collected"
-            value={dataCabinet.collected}
-            onChange={handleChangeProfile}
-            fullWidth
-            className={css.input}
-            sx={{
-              "& .MuiOutlinedInput-root": {
+            <TextField
+              label="Собрано"
+              type="number"
+              name="collected"
+              value={dataCabinet.collected}
+              onChange={handleChangeProfile}
+              fullWidth
+              className={css.input}
+              sx={{
+                "& .MuiOutlinedInput-root": {
                   "& fieldset": { borderColor: "royalblue" },
                   "&:hover fieldset": { borderColor: "blue" },
-              },
-          }}
-          />
+                },
+              }} />
           </div>
 
           <Button type="submit" variant="contained" fullWidth className={css.button}>
@@ -185,23 +161,20 @@ const Ak = () => {
                     name="name"
                     value={data.name}
                     onChange={handleChange}
-                    required
-                  />
+                    required />
                   <input
                     type="text"
                     placeholder="Фамилия"
                     name="surname"
                     value={data.surname}
                     onChange={handleChange}
-                    required
-                  />
+                    required/>
                   <div>
                     <input
                       type="file"
                       name="img"
                       onChange={handleChange}
-                      required
-                    />
+                      required />
                     <button type="button">Добавить фотографию</button>
                   </div>
                   <button type="submit">Добавить</button>
@@ -209,24 +182,19 @@ const Ak = () => {
               )}
             </div>
             <div className={css.wrapp}>
-              {loading ? (
-                <p>Загрузка волонтеров...</p>
-              ) : error ? (
-                <p style={{ color: 'red' }}>{error}</p>
-              ) : articles.length === 0 ? (
-                <p>Нет волонтеров</p>
-              ) : (
-                articles.map((el) => (
-                  <div key={el.id}>
-                    <img src={el.img} alt="Фото волонтера" />
-                    <p>
-                      <span>ФИО:</span><br /> {el.name} {el.surname}
-                    </p>
-                  </div>
-                ))
-              )}
+            {articles.map((e, index) => (
+  
+    e.volunteers.map((el, subIndex) => (
+      <div key={`${index}-${subIndex}`}>
+        <img src={el.img} alt="Фото волонтера" />
+        <p>
+          <span>ФИО:</span>
+          <br /> {el.name} {el.surname}
+        </p>
+      </div>
+    ))
+))}
             </div>
-            
           </div>
         </div>
         <button className={css.exit} onClick={handleLogout}>выйти</button>

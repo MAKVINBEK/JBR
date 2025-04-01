@@ -9,7 +9,7 @@ export default function WhoHelpBlock({ dann }) {
 
   return (
     <div className="whoHelpBlock">
-      <div onClick={() => navigate(`/patient/${dann.id}`, { state: dann })}>{dann.photos.length > 0 && <img src={dann.photos[0].photo} alt="Selected" />}</div>
+      <div onClick={() => navigate(`/patient/${dann.id}`, { state: dann })}>{dann.photos.length > 0 && <img src={dann.photos[0].photo_url} alt="Selected" />}</div>
       <div>
         <div>
           <h3>{dann.name} {dann.surname}</h3>
@@ -28,18 +28,15 @@ export default function WhoHelpBlock({ dann }) {
           <div className="whoHelpBlock2">
             <h4>{dann.collected} сом <br />собрано</h4>
             <div>{dann.sum} сом <br /> <span>нужно</span></div>
-            {dann.volunteers.map((el,index)=>(
-              <p key={index}>{el}</p>
-            ))}
+
+
           </div>
 
-          <button
-            id="helpBtn"
-            >
+          <button id="helpBtn" onClick={() => navigate(`/whoHelpOplata/${dann.id}`)} >
             Хочу помочь
           </button>
           <NavLink
-          to={`/patient/${dann.id}`}
+            to={`/patient/${dann.id}`}
             className="info">
             Подробнее <BsHandIndex />
           </NavLink></div>

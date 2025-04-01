@@ -101,7 +101,8 @@
 }
 
 .showDocsButton {
-    margin-top: 0 auto;
+    max-width: 200px;
+    margin: 0 auto;
     padding: 10px 15px;
     background: rgba(0, 0, 0, 0.152);
     color: rgb(0, 0, 0);
@@ -110,7 +111,6 @@
     border-radius: 6px;
     font-size: 16px;
     transition: 0.3s;
-    font-family: Manrope;
 }
 
 .showDocsButton:hover{
@@ -196,6 +196,7 @@
     position: relative;
     width: 100%;
     border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.066);
 }
 
 .imgBlock>img {

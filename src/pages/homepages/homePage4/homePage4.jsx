@@ -9,7 +9,7 @@ export default function HomePage4 () {
     useEffect(() => {
         const loadArticles = async () => {
           try {
-            const response = await get.getFaunder()
+            const response = await get.getGuarentee()
             setArticles(response.data);
           } catch (err) {
             console.error(err);
@@ -20,9 +20,8 @@ export default function HomePage4 () {
 
     return (
             <div className='homepage4Container'>
-                    <h2>Почему доверяют</h2>
-                    <p>Более 10 000 клиентов доверили нашему агентству 
-                        страхование транспортных средств
+                    <h2>Почему нам доверяют</h2>
+                    <p>Более 10 000 человек получили помощь благодаря нашему благотворительному фонду. Мы работаем, чтобы поддерживать тех, кто оказался в сложной жизненной ситуации.
                     </p>
                 <div>
                     <p>Преимущества</p>

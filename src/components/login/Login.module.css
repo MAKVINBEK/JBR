@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    text-align: left;
     max-width: 600px; 
     margin:0 auto;
     margin-top: 25vh;
@@ -42,6 +43,16 @@
 
 .contentLogin .int button{
     transition: .3s;
+}
+
+.alert{
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.alert-error{
+    color: red;
 }
 
 .button{

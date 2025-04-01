@@ -1,6 +1,6 @@
 import './whoHelpend.css'
 import { BsHandIndex } from "react-icons/bs";
-import {useNavigate} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 
 
 export default function WhoHelpendBlock ({date}) {
@@ -11,7 +11,7 @@ export default function WhoHelpendBlock ({date}) {
 
     return (
         <div id='whoHelpedBlock'>
-                  <div className='b11'><img onClick={() => navigate(`/patienthelpend/${date.id}`, {state: date})} src={date.photos[0]} alt="" /></div>  
+                  <div className='b11'><img onClick={() => navigate(`/patienthelpend/${date.id}`, {state: date})} src={date.img} alt="" /></div>  
                 <div className='b22'>
                     <div>
                         <h3>{date.name} {date.surname}</h3>
@@ -19,10 +19,9 @@ export default function WhoHelpendBlock ({date}) {
                     </div>
                     <div>
                         <div className='closed-text'>СБОР ЗАКРЫТ</div>
-                    <h4 className='infoHelpend'
-                        onClick={() => navigate(`/patienthelpend/${date.id}`, {state: date})}>
+                    <NavLink to={`/patienthelpend/${date.id}`} className='infoHelpend' >
                         Подробнее<BsHandIndex />
-                    </h4>
+                    </NavLink>
                     </div>
                     
                 </div>

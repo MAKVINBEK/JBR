@@ -3,34 +3,34 @@
     width: 90%;
     margin: 0 auto;
     margin-top: 200px;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     gap: 30px;
     padding: 40px 20px;
-}
-.imageContainer {
-    width: 100%;
-}
-
-.imageContainer img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    object-fit: cover;
-    border: 6px solid #4caf50;
+    background: #f8f8f8;
+    border-radius: 6px;
 }
 
 .patientInfo {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.134);
+    padding: 20px;
+    border-radius: 4px;
+    background: #fafff7;
 }
 
 .patientName {
-    font-size: 32px;
-    font-weight: bold;
-    color: #2e7d32;
+    font-size: 28px;
+    font-weight: 500;
+    color: #000000;
     line-height: 1;
+}
+
+.patientAge{
+    font-size: 18px;
+
 }
 
 .diagnosis {

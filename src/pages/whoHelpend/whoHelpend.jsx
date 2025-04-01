@@ -87,24 +87,29 @@ export default function WhoHelpend () {
 
     const [value,setValue]= useState("")
     const [articles, setArticles] =useState([])
+    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const loadArticles = async () => {
-          try {
-            const data = await get.Helped_Needy();
-            console.log("Ответ от API:", data);
-        if (Array.isArray(data)) {
-          setArticles(data);
-        } else {
-          console.error("Не массив! Ответ:", data);
-          setArticles([]);
-        }
-          } catch (err) {
-            console.error(err);
-          }
-        };
-        loadArticles();
-      }, []);
+            useEffect(() => {
+                const loadArticles = async () => {
+                  try {
+                    setLoading(true);
+                    const data = await get.getNeedy();
+                    console.log("Ответ от API:", data);
+                    if (Array.isArray(data)) {
+                      setArticles(data);
+                    } else {
+                      console.error("Не массив! Ответ:", data);
+                      setArticles([]);
+                    }
+                  } catch (err) {
+                    console.error("Ошибка запроса:", err);
+                    setArticles([]);
+                  } finally {
+                    setLoading(false);
+                  }
+                };
+                loadArticles();
+              }, []);
 
     const filteredCountries = articles.filter(country =>{
         return country.name.toLowerCase().includes(value.toLowerCase())

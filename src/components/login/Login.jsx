@@ -5,6 +5,8 @@ import css from "./Login.module.css";
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
 
 function Login() {
     const [showPass, setShowPass] = useState(false);
@@ -13,54 +15,57 @@ function Login() {
     const [alert, setAlert] = useState({ show: false, message: "", type: "" });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [open, setOpen] = useState(true);
     const navigate = useNavigate();
 
     const showAlert = (message, type) => {
         setAlert({ show: true, message, type });
-        setTimeout(() => setAlert({ show: false, message: "", type: "" }), 3000);
+        setTimeout(() => setAlert({ show: false, message: "", type: "" }), 10000);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
+
         if (!password) {
-          showAlert("Введите пароль!", "error");
-          return;
+            showAlert("Введите пароль!", "error");
+            return;
         }
-      
+        if (!login) {
+            showAlert("Введите ваше имя!", "error");
+            return;
+        }
+
         try {
-          setLoading(true);
-          setError(null);
-      
-          const data = await post.sendLogin({
-            username: login,
-            password: password,
-          });
-      
-          console.log("Login response:", data);
-      
-          if (data.access) {
-            localStorage.setItem("token", data.access);
-            localStorage.setItem("refresh", data.refresh);
-            showAlert("Вход выполнен успешно!", "success");
-      
-            setTimeout(() => {
-              navigate("/dashboard");
-            }, 1000);
-          } else {
-            const errorMessage = data.detail || "Неверный логин или пароль!";
-  showAlert(errorMessage, "error");
-  console.error("Ошибка авторизации:", data);
-          }
+            setLoading(true);
+            setError(null);
+
+            const data = await post.sendLogin({
+                username: login,
+                password: password,
+            });
+
+            if (data.access) {
+                localStorage.setItem("token", data.access);
+                localStorage.setItem("refresh", data.refresh);
+                showAlert("Вход выполнен успешно!", "success");
+
+                setTimeout(() => {
+                    navigate("/dashboard");
+                }, 1000);
+            } else {
+                const errorMessage = data.detail || "Неверный логин или пароль!";
+                showAlert(errorMessage, "error");
+                console.error("Ошибка авторизации:", data);
+            }
         } catch (err) {
-          console.error("Login failed:", err);
-          showAlert("Неверный логин или пароль!", "error");
-          setError(err);
+            console.error("Login failed:", err);
+            showAlert("Неверный логин или пароль!", "error");
+            setError(err.response?.data?.detail || err.message || JSON.stringify(err));
         } finally {
-          setLoading(false);
+            setLoading(false);
         }
-      };
-      
+    };
+
 
     return (
         <div className={css.margin}>
@@ -103,25 +108,21 @@ function Login() {
                         ),
                     }}
                 />
+                {alert.show && (
+                    <div className={`${css.alert} ${css[`alert-${alert.type}`]}`}>
+                        <Alert severity={alert.type}>{alert.message}</Alert>
+                    </div>
+                )}
+                
                 <button
-                  className={css.button}
+                    className={css.button}
                     type="submit"
                     disabled={loading}>
                     {loading ? "Загрузка..." : "Войти"}
                 </button>
             </form>
 
-            {alert.show && (
-                <div className={`alert alert-${alert.type}`}>
-                    {alert.message}
-                </div>
-            )}
-
-            {error && (
-                <div className="error">
-                    {error || "Произошла ошибка"}
-                </div>
-            )}
+            
         </div>
     );
 }

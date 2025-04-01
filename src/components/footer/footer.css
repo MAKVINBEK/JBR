@@ -1,9 +1,11 @@
-
-
 #footer{
     width: 100%;
     margin-top: 100px;
-    box-shadow: 5px 5px 10px black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.208);
+    background: linear-gradient(45deg, #007BFF, #0056b3);
+    height: 130px;
+    display: flex;
+    align-items: center;
 }
 
 .footerContainer{
@@ -11,47 +13,32 @@
     width: 90%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px 0;
-    gap: 30px;
-}
-
-.footerContainer>div:nth-child(3){
-    display: flex;
-    gap: 10px;
-} 
-
-.footerContainer>div:nth-child(3)>img{
-    width: 100%;
-    cursor: pointer;
-}
-
-.futMenu{
-    display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px 20px;
+    gap: 50px;
 }
 
-.futLink{
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 400;
-    color: rgb(57, 57, 57);
+.footerContainer div{
+    padding: 1px;
+    border-radius: 8px;
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    display: flex;justify-content: center;align-items: center;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.543);
 }
 
-@media(max-width:830px){
+.footerContainer img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
 
-    .footerContainer{
-        flex-direction: column;
-        align-items: start;
-    }
+}
 
-    .futMenu{
-        flex-direction: column;
-        align-items: start;
-        gap: 15px;
-    }
+
+
+@media(max-width:630px){
+   .footerContainer{
+    gap: 20px;
+   }
 }
