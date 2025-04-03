@@ -93,11 +93,12 @@ export const get = {
   getVolunteer: () => requester("Volunteer"),
   getNeedy: () => requester("Helped_Needy"),
   getGuarentee: () => requester("Guarentee"),
+  getDisplay: () => requester("Needy_Display"),
 };
 
 export const post = {
   sendVolunteer: (data) => poster("Volunteer", data),
-  sendProfile: (data) => poster("needy_profile/", data),
+  sendProfile: (data) => poster("api/needy_profile/", data),
   sendLogin: (data) => poster("token/", data),
   sendAplication: (data) => poster("Aplication", data),
 };

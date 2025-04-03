@@ -29,63 +29,56 @@ const Ak = () => {
   const [dataCabinet, setDataCabinet] = useState({
     collected: "",
   });
- 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setData((prevState) => ({ ...prevState, [name]: value }));
   };
-  
+
+  const handleFileChange = (event) => {
+    setData((prevState) => ({ ...prevState, img: event.target.files[0] }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!data.name || !data.surname) {
       toast.error("Пожалуйста, заполните все обязательные поля");
       return;
     }
-  
+
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("surname", data.surname);
-    if (data.img) {
-      formData.append("img", data.img);
-    } else {
-      toast.error("Пожалуйста, добавьте фотографию");
-      return;
-    }
-  
+    formData.append("img", data.img); // Ключ "img" зависит от API
+
+
     try {
-      const res = await post.sendVolunteer(formData);
-      if (!res || !res.message) {
-        throw new Error("Некорректный ответ от сервера");
-      }
-  
+      const token = localStorage.getItem("token");
+      const res = await post.sendVolunteer(formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        "Authorization": `JWT ${token}`, 
+        },
+      });
       toast.success("Успешно: " + res.message);
       setData({ name: "", surname: "", img: null });
-      setOpen(false);
-  
-      const response = await get.getVolunteer();
-      setArticles(response);
-      console.log(response);
     } catch (err) {
       console.error("Ошибка при отправке формы:", err);
-      toast.error("Ошибка: " + (err.response?.data?.message || err.message || "Что-то пошло не так"));
     }
   };
-  
+
   useEffect(() => {
-                const loadArticles = async () => {
-                  try {
-                    const response = await get.getProfile()
-                    setArticles(response);
-                  } catch (err) {
-                    console.error("rr",err);
-                  }
-                };
-                loadArticles();
-              }, []);
+    const loadArticles = async () => {
+      try {
+        const response = await get.getProfile()
+        setArticles(response);
+      } catch (err) {
+        console.error("rr", err);
+      }
+    };
+    loadArticles();
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -100,20 +93,20 @@ const Ak = () => {
   const handleChangeProfile = (e) => {
     const { name, value } = e.target;
     setDataCabinet(prev => ({
-        ...prev,
-        [name]: value
+      ...prev,
+      [name]: value
     }));
-};
+  };
 
   const handleSubmitProfile = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("collected", dataCabinet.collected);
-     
+
     try {
       const res = await post.sendProfile(formData);
       toast.success("Успешно: " + res.message);
-      setDataCabinet({ collected: "",});
+      setDataCabinet({ collected: "", });
     } catch (err) {
       toast.error("Ошибка: " + err.response?.data?.message || "Что-то пошло не так");
     }
@@ -168,12 +161,12 @@ const Ak = () => {
                     name="surname"
                     value={data.surname}
                     onChange={handleChange}
-                    required/>
+                    required />
                   <div>
                     <input
                       type="file"
                       name="img"
-                      onChange={handleChange}
+                      onChange={handleFileChange}
                       required />
                     <button type="button">Добавить фотографию</button>
                   </div>
@@ -182,18 +175,18 @@ const Ak = () => {
               )}
             </div>
             <div className={css.wrapp}>
-            {articles.map((e, index) => (
-  
-    e.volunteers.map((el, subIndex) => (
-      <div key={`${index}-${subIndex}`}>
-        <img src={el.img} alt="Фото волонтера" />
-        <p>
-          <span>ФИО:</span>
-          <br /> {el.name} {el.surname}
-        </p>
-      </div>
-    ))
-))}
+              {articles.map((e, index) => (
+
+                e.volunteers.map((el, subIndex) => (
+                  <div key={`${index}-${subIndex}`}>
+                    <img src={el.img} alt="Фото волонтера" />
+                    <p>
+                      <span>ФИО:</span>
+                      <br /> {el.name} {el.surname}
+                    </p>
+                  </div>
+                ))
+              ))}
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ export default function WhoHelp() {
     const loadArticles = async () => {
       try {
         setLoading(true);
-        const data = await get.getProfile();
+        const data = await get.getDisplay();
         console.log("Ответ от API:", data);
         if (Array.isArray(data)) {
           setArticles(data);

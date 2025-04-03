@@ -3,10 +3,6 @@ import { useParams } from "react-router-dom";
 import "./patiendDetail.css";
 import { get, } from "../../Api";
 import { IoClose } from "react-icons/io5";
-import pdf1 from "../patiendDetail/pdfImg/pdfPatient1.webp";
-import pdf2 from "../patiendDetail/pdfImg/pdfPatient2.webp";
-import pdf3 from "../patiendDetail/pdfImg/pdfPatient3.webp";
-import pdf4 from "../patiendDetail/pdfImg/pdfPatient4.webp";
 import donat from "../../img/logo6.png";
 
 const Detail = () => {
@@ -21,7 +17,7 @@ const Detail = () => {
   useEffect(() => {
     const loadArticle = async () => {
       try {
-        const data = await get.getProfile();
+        const data = await get.getDisplay();
 
         if (data && data.length > 0) {
           const selectedItem = data.find((item) => String(item.id) === id);
@@ -59,42 +55,19 @@ const Detail = () => {
     });
   };
 
-  const doctaip = [pdf1, pdf2, pdf3, pdf4]
 
   return (
     <div className="container">
       <div className="contentic">
         <div id="patientDetail">
           <div className="patientDetailContainer">
-            <button className="showDocsButton" onClick={() => setShowDocuments(!showDocuments)}>
-              {showDocuments ? "Скрыть документы" : "Показать документы"}
-            </button>
-
-            {showDocuments && (
-              <div className="documentsContainer">
-                {documents.length > 0 ? (
-                  documents.map((el, index) => (
-                    <img
-                      key={index}
-                      src={el.file_url}
-                      alt={`Документ ${index + 1}`}
-                      id="pdfThumbnail"
-                      onClick={() => setEnlargedImage(el.file_url)}
-                    />
-                  ))
-                ) : (
-                  <p>Нет документов</p>
-                )}
-
-              </div>
-            )}
 
             <div className="patientDetailBlock">
               <div className="imgBlock">
-                {photos.length > 0 && <img className="img1" src={photos[currentSlide]?.photo_url} alt="Фото пациента" />}
+                {photos.length > 0 && <img  src={photos[currentSlide]?.photo} alt="Фото пациента" />}
                 <div className="sliderContainer" style={{ transform: `translateX(-${currentSlide * 110}px)` }}>
                   {photos.map((el, index) => (
-                    <img key={index} src={el.photo_url} alt={`Фото ${index + 1}`} onClick={() => setCurrentSlide(index)} />
+                    <img key={index} src={el.photo} alt={`Фото ${index + 1}`} onClick={() => setCurrentSlide(index)} />
                   ))}
                 </div>
                 <button className='prev' onClick={() => moveSlide(-1)}>←</button>
@@ -102,7 +75,10 @@ const Detail = () => {
               </div>
 
               <div>
-                <h3>{article.needy}</h3>
+              <div className="patientData1">
+                <h3>{article.name} {article.surname}</h3>
+                <p>{article.age} лет</p>
+                </div>
                 <div className="patientData1">
                   <span>Диагноз:</span>
                   <h4>{article.diagnosis}</h4>
@@ -129,6 +105,28 @@ const Detail = () => {
 
               </div>
             </div>
+            <button className="showDocsButton" onClick={() => setShowDocuments(!showDocuments)}>
+              {showDocuments ? "Скрыть документы" : "Показать документы"}
+            </button>
+
+            {showDocuments && (
+              <div className="documentsContainer">
+                {documents.length > 0 ? (
+                  documents.map((el, index) => (
+                    <img
+                      key={index}
+                      src={el.document}
+                      alt={`Документ ${index + 1}`}
+                      id="pdfThumbnail"
+                      onClick={() => setEnlargedImage(el.document)}
+                    />
+                  ))
+                ) : (
+                  <p>Нет документов</p>
+                )}
+
+              </div>
+            )}
           </div>
 
           {enlargedImage && (
@@ -139,17 +137,17 @@ const Detail = () => {
                 <button
                   className='prev'
                   onClick={() => {
-                    const currentIndex = documents.findIndex(doc => doc.file_url === enlargedImage);
+                    const currentIndex = documents.findIndex(doc => doc.document === enlargedImage);
                     const prevIndex = (currentIndex - 1 + documents.length) % documents.length;
-                    setEnlargedImage(documents[prevIndex].file_url);
+                    setEnlargedImage(documents[prevIndex].document);
                   }}
                 >←</button>
                 <button
                   className='next'
                   onClick={() => {
-                    const currentIndex = documents.findIndex(doc => doc.file_url === enlargedImage);
+                    const currentIndex = documents.findIndex(doc => doc.document === enlargedImage);
                     const nextIndex = (currentIndex + 1) % documents.length;
-                    setEnlargedImage(documents[nextIndex].file_url);
+                    setEnlargedImage(documents[nextIndex].document);
                   }}
                 >→</button> </div>
             </div>

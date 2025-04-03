@@ -54,7 +54,8 @@ export default function Header() {
                             </div>
                         </div>
                     )}
-                    <button onClick={() => setOpen(true)} className="lKab none">Войти</button>
+                    <button onClick={() => {if (location.pathname !== '/login') {setOpen(true);}}}
+                     className="lKab none">Войти</button>
                     <div className="burger" onClick={() => setIsActive(!isActive)}>
                         <Hamburger toggled={isActive} toggle={setIsActive} />
                     </div>

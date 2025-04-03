@@ -20,11 +20,12 @@ import QRCodeScanner from './UrlQr';
 import Ak from './akaunt/Akaunt';
 import Login from './components/login/Login';
 import PrivateRoute from './components/login/PrivateRoute';
+import CurrencyConverter from './Kurs';
 
 function App() {
 
   const location = useLocation();
-  const hideHeaderRoutes = ["/qrCodePage", "/registr", "/dashboard",];
+  const hideHeaderRoutes = ["/qrCodePage", "/registr", "/dashboard",'/curs'];
   return (
     <div className="App">
       {!hideHeaderRoutes.includes(location.pathname) && <Header />}
@@ -45,6 +46,7 @@ function App() {
         <Route path='/whoHelpOplata/:id' element={<WhoHelpOplata/>}/>
         <Route path='/url' element={<QRCodeScanner/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/curs' element={<CurrencyConverter/>}/>
         <Route
           path="/dashboard" element={
             <PrivateRoute>

@@ -9,8 +9,8 @@ export default function WhoHelpBlock({ dann }) {
 
   return (
     <div className="whoHelpBlock">
-      <div onClick={() => navigate(`/patient/${dann.id}`, { state: dann })}>{dann.photos.length > 0 && <img src={dann.photos[0].photo_url} alt="Selected" />}</div>
-      <div>
+<div onClick={() => navigate(`/patient/${dann.id}`, { state: dann })}>{dann.photos.length > 0 && <img src={dann.photos[0].photo} alt="Selected" />}</div>
+<div>
         <div>
           <h3>{dann.name} {dann.surname}</h3>
           <p>
